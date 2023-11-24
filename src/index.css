@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--body_background: #f3f3f0;
+	--body_color: #1a1b1a;
+	--link_color: navy;
+}
+
+[data-theme="dark"] {
+	--body_background: #202224;
+	--body_color: #d7d4cf;
+	--link_color: cyan;
+}
+
+* {
+	transform: all 0.3s ease-in-out;
+}
