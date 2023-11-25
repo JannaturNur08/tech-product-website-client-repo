@@ -2,12 +2,15 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
 	const { googleLogIn } = useAuth();
 	const axiosPublic = useAxiosPublic();
 	const navigate = useNavigate();
+    const location = useLocation();
+	const from = location?.state?.from?.pathname || '/';
+
 	const handleGoogleSignIn = () => {
 		googleLogIn()
 			.then((result) => {
@@ -19,6 +22,7 @@ const SocialLogin = () => {
 				};
 				axiosPublic.post("/users", userInfo).then((res) => {
 					console.log(res.data);
+                   // navigate("/");
 					Swal.fire({
 						position: "top-end",
 						icon: "success",
@@ -26,7 +30,8 @@ const SocialLogin = () => {
 						showConfirmButton: false,
 						timer: 1500,
 					});
-					navigate("/");
+                    navigate(from, {replace: true});
+					
 				});
 			})
 			.catch((error) => console.log(error));

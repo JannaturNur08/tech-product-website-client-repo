@@ -8,9 +8,11 @@ import { MdReport } from "react-icons/md";
 
 const Dashboard = () => {
 	const { user } = useAuth();
+    const isAdmin = true;
+    const isModerator = true;
 
 	return (
-		<div>
+		<div className="flex">
 			{/* dashboard side bar */}
 			<div className="w-64 min-h-screen bg-orange-400">
 				<ul className="menu p-4">

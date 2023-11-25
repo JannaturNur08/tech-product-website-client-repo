@@ -23,9 +23,11 @@ const Navbar = () => {
 
 			
 
-			<li>
+			{
+                !user ? <li>
 				<Link to="/login">Login</Link>
-			</li>
+			</li> : ''
+            }
 		</>
 	);
 	return (
