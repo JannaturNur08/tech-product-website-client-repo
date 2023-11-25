@@ -15,6 +15,39 @@ const AllUsers = () => {
     }
    })
 
+   const handleMakeModerator = user => {
+     axiosSecure.patch(`/users/moderator/${user._id}`)
+     .then(res => {
+        console.log(res.data);
+        if(res.data.modifiedCount>0){
+            refetch();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `${user.name} is Moderator Now!.`,
+                showConfirmButton: false,
+                timer: 1500
+            }); 
+        }
+     })
+   }
+   const handleMakeAdmin = user => {
+     axiosSecure.patch(`/users/admin/${user._id}`)
+     .then(res => {
+        console.log(res.data);
+        if(res.data.modifiedCount>0){
+            refetch();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `${user.name} is Admin Now!.`,
+                showConfirmButton: false,
+                timer: 1500
+            }); 
+        }
+     })
+   }
+
    const handleDeleteUser = user => {
     Swal.fire({
         title: "Are you sure?",
