@@ -23,7 +23,7 @@ const Dashboard = () => {
 					{isAdmin ? (
 						<>
 							<li>
-								<NavLink to="/dashboard/adminHome">
+								<NavLink to="/dashboard/statistics">
 									<FaHome></FaHome>
 									Admin Home
 								</NavLink>
@@ -36,7 +36,7 @@ const Dashboard = () => {
 							</li>
 
 							<li>
-								<NavLink to="/dashboard/manageCoupons">
+								<NavLink to="/dashboard/coupons">
 									<RiCoupon5Line />
 									Coupons
 								</NavLink>
@@ -44,12 +44,7 @@ const Dashboard = () => {
 						</>
 					) : isModerator ? (
 						<>
-						<li>
-								<NavLink to="/dashboard/moderatorHome">
-									<FaHome></FaHome>
-									Moderator Home
-								</NavLink>
-							</li>
+						
 							<li>
 								<NavLink to="/dashboard/reviewProducts">
 									<MdPreview />
@@ -59,20 +54,20 @@ const Dashboard = () => {
 							<li>
 								<NavLink to="/dashboard/reportedProducts">
 									<MdReport />
-									Report
+									Reported Products
 								</NavLink>
 							</li>
 						</>
 					) : user ? (
 						<>
 							<li>
-								<NavLink to="/dashboard/userHome">
+								<NavLink to="/dashboard/myProfile">
 									<CgProfile />
 									My Profile
 								</NavLink>
 							</li>
 							<li>
-								<NavLink to="/dashboard/addProducts">
+								<NavLink to="/dashboard/addProduct">
 									<FaUtensils></FaUtensils>
 									Add Products
 								</NavLink>

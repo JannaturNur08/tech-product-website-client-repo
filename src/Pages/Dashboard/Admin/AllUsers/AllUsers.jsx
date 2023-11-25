@@ -1,6 +1,6 @@
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
@@ -8,11 +8,7 @@ const AllUsers = () => {
 	const { data: users = [], refetch } = useQuery({
 		queryKey: ["users"],
 		queryFn: async () => {
-			const res = await axiosSecure.get("/users", {
-				headers: {
-					authorization: `Bearer ${localStorage.getItem('token')}`
-				}
-			});
+			const res = await axiosSecure.get("/users");
 			return res.data;
 		},
 	});
@@ -64,7 +60,7 @@ const AllUsers = () => {
 						refetch();
 						Swal.fire({
 							title: "Deleted!",
-							text: "Your file has been deleted.",
+							text: "Your User has been deleted.",
 							icon: "success",
 						});
 					}

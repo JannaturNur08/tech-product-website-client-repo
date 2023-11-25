@@ -15,10 +15,11 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 const auth = getAuth(app);
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
-    const axiosPublic = useAxiosPublic();
+    
     const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
+    const axiosPublic = useAxiosPublic();
 
     const signUp = (email,password) => {
         setLoading(true);
@@ -50,18 +51,20 @@ const AuthProvider = ({ children }) => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser);
 			if (currentUser) {
-				setLoading(false);
+				
                 //get token
                 const userInfo = { email: currentUser.email};
                 axiosPublic.post('/jwt',userInfo)
                 .then(res => {
                     if(res.data.token){
                         localStorage.setItem('token', res.data.token);
+                        setLoading(false);
                     }
                 })
 			} 
 			else{
                   localStorage.removeItem('token');
+                  setLoading(false);
             }
 			
 		});

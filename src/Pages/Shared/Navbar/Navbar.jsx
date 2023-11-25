@@ -93,21 +93,21 @@ const Navbar = () => {
 									{" "}
 									{user && isAdmin && (
 										<li>
-											<Link to="/dashboard/adminHome" className="justify-between">
+											<Link to="/dashboard/statistics" className="justify-between">
 												Dashboard
 											</Link>
 										</li>
 									)}
 									{user && isModerator && (
 										<li>
-											<Link to="/dashboard/moderatorHome" className="justify-between">
+											<Link to="/dashboard/reviewProducts" className="justify-between">
 												Dashboard
 											</Link>
 										</li>
 									)}
-									{user && !isAdmin && (
+									{user && !isAdmin && !isModerator && (
 										<li>
-											<Link to="/dashboard/userHome" className="justify-between">
+											<Link to="/dashboard/myProfile" className="justify-between">
 												Dashboard
 											</Link>
 										</li>
