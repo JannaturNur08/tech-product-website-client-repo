@@ -6,13 +6,14 @@ import { CgProfile } from "react-icons/cg";
 import { MdPreview } from "react-icons/md";
 import { MdReport } from "react-icons/md";
 import useAdmin from "../hooks/useAdmin";
+import useModerator from "../hooks/useModerator";
 
 const Dashboard = () => {
 	const { user } = useAuth();
 	//get isAdmin from the database
 	const [isAdmin] = useAdmin();
    // const isAdmin = true;
-    const isModerator = true;
+   const [isModerator] = useModerator();
 
 	return (
 		<div className="flex">
@@ -41,7 +42,22 @@ const Dashboard = () => {
 								</NavLink>
 							</li>
 						</>
-					) : user ? (
+					) :   isModerator ? (
+						<>
+							<li>
+								<NavLink to="/dashboard/reviewProducts">
+									<MdPreview />
+									Review
+								</NavLink>
+							</li>
+							<li>
+								<NavLink to="/dashboard/reportedProducts">
+									<MdReport />
+									Report
+								</NavLink>
+							</li>
+						</>
+					) : user  ? (
 						<>
 							<li>
 								<NavLink to="/dashboard/userHome">
@@ -60,21 +76,6 @@ const Dashboard = () => {
 								<NavLink to="/dashboard/myProducts">
 									<FaShoppingCart></FaShoppingCart>
 									My Products
-								</NavLink>
-							</li>
-						</>
-					) : isModerator ? (
-						<>
-							<li>
-								<NavLink to="/dashboard/reviewProducts">
-									<MdPreview />
-									Review
-								</NavLink>
-							</li>
-							<li>
-								<NavLink to="/dashboard/reportedProducts">
-									<MdReport />
-									Report
 								</NavLink>
 							</li>
 						</>
