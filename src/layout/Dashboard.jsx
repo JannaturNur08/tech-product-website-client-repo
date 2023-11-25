@@ -12,15 +12,15 @@ const Dashboard = () => {
 	const { user } = useAuth();
 	//get isAdmin from the database
 	const [isAdmin] = useAdmin();
-   // const isAdmin = true;
-   const [isModerator] = useModerator();
+	// const isAdmin = true;
+	const [isModerator] = useModerator();
 
 	return (
 		<div className="flex">
 			{/* dashboard side bar */}
 			<div className="w-64 min-h-screen bg-orange-400">
 				<ul className="menu p-4">
-					{ isAdmin ? (
+					{isAdmin ? (
 						<>
 							<li>
 								<NavLink to="/dashboard/adminHome">
@@ -42,12 +42,18 @@ const Dashboard = () => {
 								</NavLink>
 							</li>
 						</>
-					) :   isModerator ? (
+					) : isModerator ? (
 						<>
+						<li>
+								<NavLink to="/dashboard/moderatorHome">
+									<FaHome></FaHome>
+									Moderator Home
+								</NavLink>
+							</li>
 							<li>
 								<NavLink to="/dashboard/reviewProducts">
 									<MdPreview />
-									Review
+									Review Products
 								</NavLink>
 							</li>
 							<li>
@@ -57,7 +63,7 @@ const Dashboard = () => {
 								</NavLink>
 							</li>
 						</>
-					) : user  ? (
+					) : user ? (
 						<>
 							<li>
 								<NavLink to="/dashboard/userHome">
@@ -80,6 +86,13 @@ const Dashboard = () => {
 							</li>
 						</>
 					) : null}
+					<div className="divider"></div>
+					<li>
+						<NavLink to="/">
+							<FaHome></FaHome>
+							Home
+						</NavLink>
+					</li>
 				</ul>
 				;
 			</div>

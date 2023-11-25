@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import useAdmin from "../../../hooks/useAdmin";
+import useModerator from "../../../hooks/useModerator";
 
 
 const Navbar = () => {
 	const { user, logOut } = useAuth();
-	const isAdmin = true;
+	const [isAdmin] = useAdmin();
+	const [isModerator] = useModerator();
+
 	console.log(user);
 	const handleLogOut = () => {
 		logOut()
@@ -72,7 +76,7 @@ const Navbar = () => {
 								className="btn btn-ghost btn-circle avatar">
 								<div className="w-10 rounded-full">
 									<img
-										alt="Tailwind CSS Navbar component"
+										
 										src={user.photoURL}
 									/>
 								</div>
@@ -81,22 +85,29 @@ const Navbar = () => {
 								tabIndex={0}
 								className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
 								<li>
-									<a className="justify-between">
+									<a   className="justify-between">
 										{user.displayName}
 									</a>
 								</li>
-								<li>
+								<li >
 									{" "}
 									{user && isAdmin && (
 										<li>
-											<Link to="/dashboard/adminHome">
+											<Link to="/dashboard/adminHome" className="justify-between">
+												Dashboard
+											</Link>
+										</li>
+									)}
+									{user && isModerator && (
+										<li>
+											<Link to="/dashboard/moderatorHome" className="justify-between">
 												Dashboard
 											</Link>
 										</li>
 									)}
 									{user && !isAdmin && (
 										<li>
-											<Link to="/dashboard/userHome">
+											<Link to="/dashboard/userHome" className="justify-between">
 												Dashboard
 											</Link>
 										</li>
@@ -105,7 +116,7 @@ const Navbar = () => {
 								<li>
 									<button
 										onClick={handleLogOut}
-										className="btn btn-ghost">
+										className="btn btn-ghost justify-between">
 										LogOut
 									</button>
 								</li>
