@@ -5,10 +5,13 @@ import { RiCoupon5Line } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import { MdPreview } from "react-icons/md";
 import { MdReport } from "react-icons/md";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
 	const { user } = useAuth();
-    const isAdmin = true;
+	//get isAdmin from the database
+	const [isAdmin] = useAdmin();
+   // const isAdmin = true;
     const isModerator = true;
 
 	return (
@@ -16,7 +19,7 @@ const Dashboard = () => {
 			{/* dashboard side bar */}
 			<div className="w-64 min-h-screen bg-orange-400">
 				<ul className="menu p-4">
-					{isAdmin ? (
+					{ isAdmin ? (
 						<>
 							<li>
 								<NavLink to="/dashboard/adminHome">
