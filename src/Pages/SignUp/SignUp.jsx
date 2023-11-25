@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 
-
 const SignUp = () => {
 	const axiosPublic = useAxiosPublic();
 	const { signUp, updateUserProfile } = useAuth();
@@ -17,43 +16,35 @@ const SignUp = () => {
 	} = useForm();
 	const navigate = useNavigate();
 
-const onSubmit = data => {
-    signUp(data.email,data.password)
-    .then( result => {
-        const newUser = result.user;
-        console.log(newUser);
-        updateUserProfile(data.name,data.photoURL)
-        .then(()=> {
-            const userInfo = {
-                name: data.name,
-                email: data.email,
-                role : 'user'
-            }
-            axiosPublic.post('/users',userInfo)
-            .then(res => {
-                if(res.data.insertedId) {
-                    console.log('user added in database');
-                    reset();
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'User created successfully.',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    navigate('/');
-                }
-            })
-        })
-        .catch(error => 
-            console.log(error)
-
-        )
-
-    }
-
-    )
-};
+	const onSubmit = (data) => {
+		signUp(data.email, data.password).then((result) => {
+			const newUser = result.user;
+			console.log(newUser);
+			updateUserProfile(data.name, data.photoURL)
+				.then(() => {
+					const userInfo = {
+						name: data.name,
+						email: data.email,
+						role: "user",
+					};
+					axiosPublic.post("/users", userInfo).then((res) => {
+						if (res.data.insertedId) {
+							console.log("user added in database");
+							reset();
+							Swal.fire({
+								position: "top-end",
+								icon: "success",
+								title: "User created successfully.",
+								showConfirmButton: false,
+								timer: 1500,
+							});
+							navigate("/");
+						}
+					});
+				})
+				.catch((error) => console.log(error));
+		});
+	};
 	return (
 		<div className="lg:w-3/4 mx-auto mt-20">
 			<h2 className="font-mercellus lg:text-4xl">SignUp</h2>

@@ -3,7 +3,6 @@ import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
 import useModerator from "../../../hooks/useModerator";
 
-
 const Navbar = () => {
 	const { user, logOut } = useAuth();
 	const [isAdmin] = useAdmin();
@@ -25,13 +24,13 @@ const Navbar = () => {
 				<Link to="/products">Our Products</Link>
 			</li>
 
-			
-
-			{
-                !user ? <li>
-				<Link to="/login">Login</Link>
-			</li> : ''
-            }
+			{!user ? (
+				<li>
+					<Link to="/login">Login</Link>
+				</li>
+			) : (
+				""
+			)}
 		</>
 	);
 	return (
@@ -68,65 +67,68 @@ const Navbar = () => {
 					<ul className="menu menu-horizontal px-1">{navOptions}</ul>
 				</div>
 				<div className="navbar-end">
-                {user ? (
-					<>
-						<div className="dropdown dropdown-end">
-							<label
-								tabIndex={0}
-								className="btn btn-ghost btn-circle avatar">
-								<div className="w-10 rounded-full">
-									<img
-										
-										src={user.photoURL}
-									/>
-								</div>
-							</label>
-							<ul
-								tabIndex={0}
-								className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-								<li>
-									<a   className="justify-between">
-										{user.displayName}
-									</a>
-								</li>
-								<li >
-									{" "}
-									{user && isAdmin && (
-										<li>
-											<Link to="/dashboard/statistics" className="justify-between">
-												Dashboard
-											</Link>
-										</li>
-									)}
-									{user && isModerator && (
-										<li>
-											<Link to="/dashboard/reviewProducts" className="justify-between">
-												Dashboard
-											</Link>
-										</li>
-									)}
-									{user && !isAdmin && !isModerator && (
-										<li>
-											<Link to="/dashboard/myProfile" className="justify-between">
-												Dashboard
-											</Link>
-										</li>
-									)}
-								</li>
-								<li>
-									<button
-										onClick={handleLogOut}
-										className="btn btn-ghost justify-between">
-										LogOut
-									</button>
-								</li>
-							</ul>
-						</div>
-					</>
-				) : (
-					""
-				)}
-                </div>
+					{user ? (
+						<>
+							<div className="dropdown dropdown-end">
+								<label
+									tabIndex={0}
+									className="btn btn-ghost btn-circle avatar">
+									<div className="w-10 rounded-full">
+										<img src={user.photoURL} />
+									</div>
+								</label>
+								<ul
+									tabIndex={0}
+									className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+									<li>
+										<a className="justify-between">
+											{user.displayName}
+										</a>
+									</li>
+									<li>
+										{" "}
+										{user && isAdmin && (
+											<li>
+												<Link
+													to="/dashboard/statistics"
+													className="justify-between">
+													Dashboard
+												</Link>
+											</li>
+										)}
+										{user && isModerator && (
+											<li>
+												<Link
+													to="/dashboard/reviewProducts"
+													className="justify-between">
+													Dashboard
+												</Link>
+											</li>
+										)}
+										{user && !isAdmin && !isModerator && (
+											<li>
+												<Link
+													to="/dashboard/myProfile"
+													className="justify-between">
+													Dashboard
+												</Link>
+											</li>
+										)}
+									</li>
+									<li>
+										<button
+											onClick={handleLogOut}
+											className="btn btn-ghost justify-between">
+											LogOut
+										</button>
+									</li>
+								</ul>
+							</div>
+						</>
+					) : (
+						""
+					)}
+				</div>
 			</div>
 		</div>
 	);
