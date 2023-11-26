@@ -17,6 +17,7 @@ import MyProfile from "../Pages/Dashboard/Users/MyProfile/MyProfile";
 import AddProduct from "../Pages/Dashboard/Users/AddProduct/AddProduct";
 import MyProducts from "../Pages/Dashboard/Users/MyProducts/MyProducts";
 import UpdateProduct from "../Pages/Dashboard/Users/UpdateProduct.jsx/UpdateProduct";
+import ProductDetails from "../Pages/Home/ProductDetails/ProductDetails";
 
 export const router = createBrowserRouter([
 	{
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
 			{
 				path: "signup",
 				element: <SignUp></SignUp>,
+			},
+			{
+				path: "productDetails/:id",
+				element: <ProductDetails></ProductDetails>,
 			},
 		],
 	},
