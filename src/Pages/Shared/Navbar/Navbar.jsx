@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
 import useModerator from "../../../hooks/useModerator";
+import './Navbar.css';
 
 const Navbar = () => {
 	const { user, logOut } = useAuth();
@@ -18,15 +19,30 @@ const Navbar = () => {
 	const navOptions = (
 		<>
 			<li>
-				<Link to="/">Home</Link>
+			<NavLink
+					to="/"
+					className={({ isActive, isPending }) =>
+						isPending ? "pending" : isActive ? "active " : ""
+					}>
+					HOME
+				</NavLink>
 			</li>
 			<li>
-				<Link to="/products">Our Products</Link>
+				
+				<NavLink
+					to="/products"
+					className={({ isActive, isPending }) =>
+						isPending ? "pending" : isActive ? "active " : ""
+					}>
+					OUR PRODUCTS
+				</NavLink>
 			</li>
 
 			{!user ? (
 				<li>
-					<Link to="/login">Login</Link>
+					<NavLink to="/login" className={({ isActive, isPending }) =>
+						isPending ? "pending" : isActive ? "active " : ""
+					}>LOGIN</NavLink>
 				</li>
 			) : (
 				""
@@ -35,9 +51,9 @@ const Navbar = () => {
 	);
 	return (
 		<div>
-			<div className="navbar bg-base-100">
+			<div className="navbar bg-base-100 text-xl sticky-header text-textColor">
 				<div className="flex-1">
-					<a className="btn btn-ghost text-xl">Tech</a>
+					<a className="  text-2xl">MatraTech</a>
 				</div>
 				<div className="navbar-start">
 					<div className="dropdown">
@@ -58,13 +74,13 @@ const Navbar = () => {
 						</label>
 						<ul
 							tabIndex={0}
-							className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+							className="menu menu-compact dropdown-content mt-3 p-2  rounded-box w-52">
 							{navOptions}
 						</ul>
 					</div>
 				</div>
 				<div className="navbar-center hidden lg:flex">
-					<ul className="menu menu-horizontal px-1">{navOptions}</ul>
+					<ul className="flex gap-6 px-1  font-mercellus text-base">{navOptions}</ul>
 				</div>
 				<div className="navbar-end">
 					{user ? (

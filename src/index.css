@@ -9,10 +9,10 @@
 	--link_color: navy;
 }
 
-[data-theme="dark"] {
+[data-theme = "dark"] {
 	--body_background: #202224;
 	--body_color: #d7d4cf;
-	--link_color: cyan;
+	--link_color: #33a1ff;
 }
 
 * {

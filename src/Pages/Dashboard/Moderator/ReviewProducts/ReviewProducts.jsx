@@ -3,9 +3,10 @@ import useProducts from "../../../../hooks/useProducts";
 
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useSortByPendingProducts from "../../../../hooks/useSortByPendingProducts";
 
 const ReviewProducts = () => {
-	const [products, refetch] = useProducts();
+	const [products, refetch] = useSortByPendingProducts();
 	const axiosPublic = useAxiosPublic();
 
 	const handleAccept = async (productId) => {
@@ -22,6 +23,13 @@ const ReviewProducts = () => {
 			);
 
 			refetch(newProducts);
+			Swal.fire({
+				position: "top-end",
+				icon: "success",
+				title: 'Posted Product is accepted.',
+				showConfirmButton: false,
+				timer: 1500,
+			});
 		} catch (error) {
 			console.error(`Error accepting product ${productId}:`, error);
 		}
@@ -95,12 +103,12 @@ const ReviewProducts = () => {
 
 								<th>
 									<Link to={`/productDetails/${item._id}`}>
-										<button className="btn btn-ghost btn-md bg-blue-500 text-white">
+										<button className="btn btn-ghost btn-md bg-white text-blue-400">
 											View Details
 										</button>
 									</Link>
 								</th>
-								<th>
+								<th style={{ color: item.status === 'accepted' ? "green" : "" }}>
 									{item.status === "accepted" ? (
 										"Accepted"
 									) : (
@@ -113,7 +121,7 @@ const ReviewProducts = () => {
 										</button>
 									)}
 								</th>
-								<th>
+								<th style={{ color: item.status === 'rejected' ? "red" : " " }}>
 									{item.status === "rejected" ? (
 										"Rejected"
 									) : (
@@ -126,7 +134,7 @@ const ReviewProducts = () => {
 										</button>
 									)}
 								</th>
-								<th>
+								<th style={{ color: item.featured === 'featured' ? "blue" : " " }}>
 									{item.featured === "featured" ? (
 										"Featured"
 									) : (
@@ -134,7 +142,7 @@ const ReviewProducts = () => {
 											onClick={() =>
 												handleFeatured(item._id)
 											}
-											className="btn btn-outline btn-accent btn-md text-white">
+											className="btn btn-outline btn-accent btn-md text-white" disabled={item.status!=='accepted'}>
 											Make featured
 										</button>
 									)}

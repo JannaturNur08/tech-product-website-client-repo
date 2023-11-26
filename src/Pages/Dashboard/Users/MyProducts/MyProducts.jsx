@@ -70,7 +70,7 @@ const MyProducts = () => {
 										</div>
 									</td>
 									<td>{item.vote}</td>
-									<td>{item.status}</td>
+									<td style={{ color: item.status === 'accepted' ? "green" : "red" }}>{item.status}</td>
 									<th>
                                     <Link to={`/dashboard/updateProducts/${item._id}`}>
                                             <button

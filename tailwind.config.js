@@ -17,10 +17,10 @@ export default {
         
       },
       hover : {
-        bg_color : '#AB916C',
+        hoverColor : '#0078ff',
       },
       textColor : {
-        secondary : "#5B6956",
+        textColor : "#002b44",
       }
     },
   },
