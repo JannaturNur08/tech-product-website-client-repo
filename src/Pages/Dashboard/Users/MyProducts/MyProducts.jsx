@@ -6,6 +6,7 @@ import { FaTrashAlt, FaUpload } from "react-icons/fa";
 const MyProducts = () => {
     const [myProducts,refetch] = useMyProducts();
     const axiosPublic = useAxiosPublic();
+    console.log(myProducts);
 
     const handleUpdate = id => {
         Swal.fire({
@@ -19,7 +20,7 @@ const MyProducts = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axiosPublic.patch(`/myProducts/${id}`)
+                axiosPublic.patch(`/products/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
@@ -45,7 +46,7 @@ const MyProducts = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axiosPublic.delete(`/myProducts/${id}`)
+                axiosPublic.delete(`/products/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
@@ -72,6 +73,7 @@ const MyProducts = () => {
                                 #
                             </th>
                             <th>Product Name</th>
+                            <th>Product Image</th>
                             <th>Number of Votes</th>
                             <th>Status</th>
                             <th>Update</th>
@@ -84,11 +86,15 @@ const MyProducts = () => {
                                 <th>
                                     {index + 1}
                                 </th>
+                                <th>
+                                    {item.product_name}
+                                </th>
+
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={item.product_name} alt="Avatar Tailwind CSS Component" />
+                                                <img src={item.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +107,7 @@ const MyProducts = () => {
                                     <button
                                         onClick={() => handleUpdate(item._id)}
                                         className="btn btn-ghost btn-lg">
-                                        <FaUpload className="text-red-600"></FaUpload>Update
+                                        <FaUpload className="text-red-600"></FaUpload>
                                     </button>
                                 </th>
                                 <th>
