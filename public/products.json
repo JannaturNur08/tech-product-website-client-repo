@@ -1,7 +1,7 @@
 [
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460010" },
-		"userId": { "$oid": "65624fd4c714d1755b33141d" },
+		
+		"ownerEmail":"zinat@gmail.com",
 		"product_name": "Canon EOS 5D Mark IV",
 		"description": "Professional full-frame DSLR camera with advanced features for stunning photography.",
 		"image": "https://i.ibb.co/vYhMRb0/camera.png",
@@ -9,13 +9,15 @@
 		"facebook_external_link": "https://www.facebook.com/canon",
 		"google_external_link": "https://www.google.com/canon",
 		"status": "pending",
+		"timestamp": "November 26th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460011" },
-		"userId": { "$oid": "65625ddac714d1755b331421" },
+		
+		"ownerEmail":"zinat@gmail.com",
 		"product_name": "GoPro Hero 9 Black",
 		"description": "Action camera with 5K video, HyperSmooth 3.0, and TimeWarp 3.0 for epic adventures.",
 		"image": "https://i.ibb.co/jVbsbSW/go-pro.png",
@@ -23,13 +25,15 @@
 		"facebook_external_link": "https://www.facebook.com/gopro",
 		"google_external_link": "https://www.google.com/gopro",
 		"status": "pending",
+		"timestamp": "November 20th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460012" },
-		"userId": { "$oid": "65624fd4c714d1755b33141d" },
+		
+		"ownerEmail":"matrix@gmail.com",
 		"product_name": "Sony WH-1000XM4",
 		"description": "Premium noise-canceling headphones with exceptional sound quality and long battery life.",
 		"image": "https://i.ibb.co/D926vkV/head-phone.png",
@@ -37,13 +41,15 @@
 		"facebook_external_link": "https://www.facebook.com/sony",
 		"google_external_link": "https://www.google.com/sony",
 		"status": "pending",
+		"timestamp": "November 20th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460013" },
-		"userId": { "$oid": "65625ddac714d1755b331421" },
+		
+		"ownerEmail":"matrix@gmail.com",
 		"product_name": "iPhone 13 Pro",
 		"description": "Latest flagship smartphone with a powerful A15 Bionic chip and advanced camera system.",
 		"image": "https://i.ibb.co/nzKLwwx/iphone.png",
@@ -51,13 +57,15 @@
 		"facebook_external_link": "https://www.facebook.com/apple",
 		"google_external_link": "https://www.google.com/apple",
 		"status": "pending",
+		"timestamp": "November 21th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460014" },
-		"userId": { "$oid": "65625ddac714d1755b331421" },
+		
+		"ownerEmail":"zinat@gmail.com",
 		"product_name": "Logitech G Pro X Mechanical Gaming Keyboard",
 		"description": "High-performance mechanical keyboard designed for professional gamers.",
 		"image": "https://i.ibb.co/NKtYXxW/keybard.png",
@@ -65,13 +73,15 @@
 		"facebook_external_link": "https://www.facebook.com/logitech",
 		"google_external_link": "https://www.google.com/logitech",
 		"status": "pending",
+		"timestamp": "November 23th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460015" },
-		"userId": { "$oid": "65624fd4c714d1755b33141d" },
+		
+		"ownerEmail":"zinat@gmail.com",
 		"product_name": "MacBook Pro 16-inch",
 		"description": "Powerful laptop with a stunning Retina display, designed for creative professionals.",
 		"image": "https://i.ibb.co/GvYnz0F/macbook.png",
@@ -79,13 +89,14 @@
 		"facebook_external_link": "https://www.facebook.com/apple",
 		"google_external_link": "https://www.google.com/apple",
 		"status": "pending",
+		"timestamp": "November 24th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460016" },
-		"userId": { "$oid": "65625ddac714d1755b331421" },
+		"ownerEmail":"matrix@gmail.com",
 		"product_name": "Logitech MX Master 3 Wireless Mouse",
 		"description": "Advanced wireless mouse with customizable buttons and ergonomic design.",
 		"image": "https://i.ibb.co/LxFxFjR/mouse.png",
@@ -93,13 +104,15 @@
 		"facebook_external_link": "https://www.facebook.com/logitech",
 		"google_external_link": "https://www.google.com/logitech",
 		"status": "pending",
+		"timestamp": "November 19th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460017" },
-		"userId": { "$oid": "65624fd4c714d1755b33141d" },
+		
+		"ownerEmail":"matrix@gmail.com",
 		"product_name": "Polaroid Now Instant Film Camera",
 		"description": "Modern instant film camera for capturing memories in a classic Polaroid style.",
 		"image": "https://i.ibb.co/gMHH8JK/polaroid.png",
@@ -107,13 +120,15 @@
 		"facebook_external_link": "https://www.facebook.com/polaroid",
 		"google_external_link": "https://www.google.com/polaroid",
 		"status": "pending",
+		"timestamp": "November 16th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460018" },
-		"userId": { "$oid": "65625ddac714d1755b331421" },
+		
+		"ownerEmail":"zinat@gmail.com",
 		"product_name": "Apple Watch Series 7",
 		"description": "Smartwatch with a larger and always-on Retina display, fitness features, and more.",
 		"image": "https://i.ibb.co/89FyyXb/smart-watch.png",
@@ -121,13 +136,15 @@
 		"facebook_external_link": "https://www.facebook.com/apple",
 		"google_external_link": "https://www.google.com/apple",
 		"status": "pending",
+		"timestamp": "November 25th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460019" },
-		"userId": { "$oid": "65624fd4c714d1755b33141d" },
+		
+		"ownerEmail":"zinat@gmail.com",
 		"product_name": "JBL Charge 4 Portable Bluetooth Speaker",
 		"description": "Waterproof portable speaker with powerful sound and a built-in power bank.",
 		"image": "https://i.ibb.co/42NzjMy/speaker.png",
@@ -135,13 +152,15 @@
 		"facebook_external_link": "https://www.facebook.com/jbl",
 		"google_external_link": "https://www.google.com/jbl",
 		"status": "pending",
+		"timestamp": "November 24th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	},
 	{
-		"_id": { "$oid": "661f1f77bcf86cd799460020" },
-		"userId": { "$oid": "65625ddac714d1755b331421" },
+		
+		"ownerEmail":"matrix@gmail.com",
 		"product_name": "Oculus Quest 2",
 		"description": "Immersive virtual reality headset with wireless freedom and stunning graphics.",
 		"image": "https://i.ibb.co/rw4JbwW/VR.png",
@@ -149,7 +168,9 @@
 		"facebook_external_link": "https://www.facebook.com/oculus",
 		"google_external_link": "https://www.google.com/oculus",
 		"status": "pending",
+		"timestamp": "November 25th 2023, 1:43:32 pm",
 		"vote": 0,
+		"votedUsers": [],
 		"Featured": false,
 		"Report": false
 	}
