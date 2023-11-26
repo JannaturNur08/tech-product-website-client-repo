@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../../../hooks/useAuth";
 
 import { WithContext as ReactTags } from "react-tag-input";
-import { useState } from "react";
+
 import moment from "moment/moment";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -36,10 +36,15 @@ const AddProduct = () => {
 			const product = {
 				ownerEmail: user.email,
 				product_name: data.name,
-				image: res.data.data.display_url,
 				description: data.description,
-				tags: data.tags,
-				timestamp: moment(data.timestamp).toISOString(),
+				image: res.data.data.display_url,
+                tags: data.tags.map((tag) => tag.text),
+				facebook_external_link: data.fbLink,
+				google_external_link: data.googleLink,
+				status: "pending",
+				timestamp: moment(data.timestamp).format("MMMM Do YYYY, h:mm:ss a"),
+				vote: 0,
+				votedUsers:[]
 			};
 			//
 			console.log(data.timestamp);
@@ -119,9 +124,43 @@ const AddProduct = () => {
 							render={({ field }) => (
 								<ReactTags
 									{...field}
+									tags={field.value}
+									handleDelete={(index) =>
+										field.onChange(
+											field.value.filter(
+												(_, i) => i !== index
+											)
+										)
+									}
+									handleAddition={(tag) =>
+										field.onChange([...field.value, tag])
+									}
 									inputProps={{ placeholder: "Add a tag" }}
 								/>
 							)}
+						/>
+					</div>
+
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">FaceBook Link</span>
+						</label>
+						<input
+							type="text"
+							{...register("fbLink", { required: true })}
+							placeholder="Facebook Link"
+							className="input input-bordered"
+						/>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Google Link</span>
+						</label>
+						<input
+							type="text"
+							{...register("googleLink", { required: true })}
+							placeholder="Google Link"
+							className="input input-bordered"
 						/>
 					</div>
 
@@ -139,7 +178,7 @@ const AddProduct = () => {
 						/>
 					</div>
 
-					<button className="btn">
+					<button className="btn bg-primary text-white">
 						Submit <MdAddCard />
 					</button>
 				</form>
