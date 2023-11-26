@@ -16,6 +16,7 @@ import ReportedProducts from "../Pages/Dashboard/Moderator/ReportedProducts/Repo
 import MyProfile from "../Pages/Dashboard/Users/MyProfile/MyProfile";
 import AddProduct from "../Pages/Dashboard/Users/AddProduct/AddProduct";
 import MyProducts from "../Pages/Dashboard/Users/MyProducts/MyProducts";
+import UpdateProduct from "../Pages/Dashboard/Users/UpdateProduct.jsx/UpdateProduct";
 
 export const router = createBrowserRouter([
 	{
@@ -59,6 +60,11 @@ export const router = createBrowserRouter([
 			{
 				path: "myProducts",
 				element: <MyProducts></MyProducts>,
+			},
+			{
+				path: "updateProducts/:id",
+				element: <UpdateProduct></UpdateProduct>,
+				loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
 			},
 			
 			// admin routes

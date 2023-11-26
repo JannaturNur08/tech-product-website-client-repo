@@ -1,7 +1,8 @@
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import useMyProducts from "../../../../hooks/useMyProducts";
-import { FaTrashAlt, FaUpload } from "react-icons/fa";
+import { FaEdit, FaTrashAlt, FaUpload } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MyProducts = () => {
 	const [myProducts, refetch] = useMyProducts();
@@ -94,13 +95,13 @@ const MyProducts = () => {
 									<td>{item.vote}</td>
 									<td>{item.status}</td>
 									<th>
-										<button
-											onClick={() =>
-												handleUpdate(item._id)
-											}
-											className="btn btn-ghost btn-lg">
-											<FaUpload className="text-red-600"></FaUpload>
-										</button>
+                                    <Link to={`/dashboard/updateProducts/${item._id}`}>
+                                            <button
+                                                className="btn btn-ghost btn-md bg-blue-500">
+                                                <FaEdit className="text-white 
+                                        "></FaEdit>
+                                            </button>
+                                        </Link>
 									</th>
 									<th>
 										<button
