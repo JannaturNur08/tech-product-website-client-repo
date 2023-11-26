@@ -43,7 +43,8 @@ const UpdateProduct = () => {
 				status: "pending",
 				timestamp: moment(data.timestamp).format("MMMM Do YYYY, h:mm:ss a"),
 				vote: 0,
-				votedUsers:[]
+				votedUsers:[],
+                featured: "pending"
 			};
 			//
 			console.log(data.timestamp);

@@ -1,7 +1,6 @@
 [
 	{
-		
-		"ownerEmail":"zinat@gmail.com",
+		"ownerEmail": "zinat@gmail.com",
 		"product_name": "Canon EOS 5D Mark IV",
 		"description": "Professional full-frame DSLR camera with advanced features for stunning photography.",
 		"image": "https://i.ibb.co/vYhMRb0/camera.png",
@@ -12,12 +11,11 @@
 		"timestamp": "November 26th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		
-		"ownerEmail":"zinat@gmail.com",
+		"ownerEmail": "zinat@gmail.com",
 		"product_name": "GoPro Hero 9 Black",
 		"description": "Action camera with 5K video, HyperSmooth 3.0, and TimeWarp 3.0 for epic adventures.",
 		"image": "https://i.ibb.co/jVbsbSW/go-pro.png",
@@ -28,12 +26,11 @@
 		"timestamp": "November 20th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		
-		"ownerEmail":"matrix@gmail.com",
+		"ownerEmail": "matrix@gmail.com",
 		"product_name": "Sony WH-1000XM4",
 		"description": "Premium noise-canceling headphones with exceptional sound quality and long battery life.",
 		"image": "https://i.ibb.co/D926vkV/head-phone.png",
@@ -44,12 +41,11 @@
 		"timestamp": "November 20th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		
-		"ownerEmail":"matrix@gmail.com",
+		"ownerEmail": "matrix@gmail.com",
 		"product_name": "iPhone 13 Pro",
 		"description": "Latest flagship smartphone with a powerful A15 Bionic chip and advanced camera system.",
 		"image": "https://i.ibb.co/nzKLwwx/iphone.png",
@@ -60,12 +56,11 @@
 		"timestamp": "November 21th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		
-		"ownerEmail":"zinat@gmail.com",
+		"ownerEmail": "zinat@gmail.com",
 		"product_name": "Logitech G Pro X Mechanical Gaming Keyboard",
 		"description": "High-performance mechanical keyboard designed for professional gamers.",
 		"image": "https://i.ibb.co/NKtYXxW/keybard.png",
@@ -76,12 +71,11 @@
 		"timestamp": "November 23th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		
-		"ownerEmail":"zinat@gmail.com",
+		"ownerEmail": "zinat@gmail.com",
 		"product_name": "MacBook Pro 16-inch",
 		"description": "Powerful laptop with a stunning Retina display, designed for creative professionals.",
 		"image": "https://i.ibb.co/GvYnz0F/macbook.png",
@@ -92,11 +86,11 @@
 		"timestamp": "November 24th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		"ownerEmail":"matrix@gmail.com",
+		"ownerEmail": "matrix@gmail.com",
 		"product_name": "Logitech MX Master 3 Wireless Mouse",
 		"description": "Advanced wireless mouse with customizable buttons and ergonomic design.",
 		"image": "https://i.ibb.co/LxFxFjR/mouse.png",
@@ -107,12 +101,11 @@
 		"timestamp": "November 19th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		
-		"ownerEmail":"matrix@gmail.com",
+		"ownerEmail": "matrix@gmail.com",
 		"product_name": "Polaroid Now Instant Film Camera",
 		"description": "Modern instant film camera for capturing memories in a classic Polaroid style.",
 		"image": "https://i.ibb.co/gMHH8JK/polaroid.png",
@@ -123,12 +116,11 @@
 		"timestamp": "November 16th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		
-		"ownerEmail":"zinat@gmail.com",
+		"ownerEmail": "zinat@gmail.com",
 		"product_name": "Apple Watch Series 7",
 		"description": "Smartwatch with a larger and always-on Retina display, fitness features, and more.",
 		"image": "https://i.ibb.co/89FyyXb/smart-watch.png",
@@ -139,12 +131,11 @@
 		"timestamp": "November 25th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		
-		"ownerEmail":"zinat@gmail.com",
+		"ownerEmail": "zinat@gmail.com",
 		"product_name": "JBL Charge 4 Portable Bluetooth Speaker",
 		"description": "Waterproof portable speaker with powerful sound and a built-in power bank.",
 		"image": "https://i.ibb.co/42NzjMy/speaker.png",
@@ -155,12 +146,11 @@
 		"timestamp": "November 24th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	},
 	{
-		
-		"ownerEmail":"matrix@gmail.com",
+		"ownerEmail": "matrix@gmail.com",
 		"product_name": "Oculus Quest 2",
 		"description": "Immersive virtual reality headset with wireless freedom and stunning graphics.",
 		"image": "https://i.ibb.co/rw4JbwW/VR.png",
@@ -171,7 +161,7 @@
 		"timestamp": "November 25th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"Featured": false,
-		"Report": false
+		"featured": "pending",
+		"report": "pending"
 	}
 ]

@@ -10,7 +10,7 @@ const ReviewProducts = () => {
 
 	const handleAccept = async (productId) => {
 		try {
-			await axiosPublic.patch(`api/products/${productId}`, {
+			await axiosPublic.patch(`api/status/${productId}`, {
 				status: "accepted",
 			});
 
@@ -29,7 +29,7 @@ const ReviewProducts = () => {
 
 	const handleReject = async (productId) => {
 		try {
-			await axiosPublic.patch(`api/products/${productId}`, {
+			await axiosPublic.patch(`api/status/${productId}`, {
 				status: "rejected",
 			});
 
@@ -39,7 +39,7 @@ const ReviewProducts = () => {
 					? { ...product, status: "rejected" }
 					: product
 			);
-
+			console.log(newProducts.status);
 			refetch(newProducts);
 		} catch (error) {
 			console.error(`Error rejecting product ${productId}:`, error);
@@ -47,19 +47,23 @@ const ReviewProducts = () => {
 	};
 
 	const handleFeatured = async (productId) => {
+		console.log("button clicked inside featured button");
 		try {
-			await axiosPublic.patch(`/api/products/${productId}`, {
-				Featured: true,
+			await axiosPublic.patch(`/api/featured/${productId}`, {
+				featured: "featured",
 			});
+			console.log(products);
 
 			// Update the state with the new status
 			const newProducts = products.map((product) =>
 				product._id === productId
-					? { ...product, Featured: true }
+					? { ...product, featured: "featured" }
 					: product
 			);
+			console.log(newProducts);
 
 			refetch(newProducts);
+			console.log(newProducts);
 		} catch (error) {
 			console.error(
 				`Error marking product ${productId} as featured:`,
@@ -80,7 +84,7 @@ const ReviewProducts = () => {
 							<th>Details</th>
 							<th>Accept</th>
 							<th>Reject</th>
-							<th>Featured</th>
+							<th>featured</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -123,7 +127,7 @@ const ReviewProducts = () => {
 									)}
 								</th>
 								<th>
-									{item.Featured === true ? (
+									{item.featured === "featured" ? (
 										"Featured"
 									) : (
 										<button
@@ -131,7 +135,7 @@ const ReviewProducts = () => {
 												handleFeatured(item._id)
 											}
 											className="btn btn-outline btn-accent btn-md text-white">
-											Make Featured
+											Make featured
 										</button>
 									)}
 								</th>
