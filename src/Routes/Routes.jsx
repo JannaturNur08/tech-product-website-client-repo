@@ -30,12 +30,7 @@ export const router = createBrowserRouter([
 				path: "/",
 				element: <Home></Home>,
 			},
-			{
-				path: "/",
-				element: <PrivateRoute>
-					<FeaturedSection></FeaturedSection>
-				</PrivateRoute>,
-			},
+			
 			{
 				path: "login",
 				element: <Login></Login>,

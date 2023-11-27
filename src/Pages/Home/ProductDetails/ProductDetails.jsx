@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 // import { Rating } from "@smastrom/react-rating";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 import useProductsById from "../../../hooks/useProductsById";
 
@@ -55,7 +56,7 @@ const ProductDetails = () => {
 			console.log(updatedProducts);
 		} catch (error) {
 			console.error(
-				`Error marking product ${productId} as featured:`,
+				`Error marking product ${productId} as reported:`,
 				error
 			);
 		}
@@ -109,19 +110,19 @@ const ProductDetails = () => {
 									</p>
 								))}
 						</div>
-						<div className="space-y-2">
-							<div>
-								<p>{products.timestamp} </p>
+						<div className="space-y-3">
+							<p>{products.timestamp} </p>
+							<div className="flex gap-5 text-xl">
 								<a href={products.facebook_external_link}>
-									{products.facebook_external_link}
+									<FaFacebook />
 								</a>
 								<a href={products.google_external_link}>
-									{products.google_external_link}
+									<FaGoogle />
 								</a>
-								<p className="font-jost text-xl">
-									{products.description}
-								</p>
 							</div>
+							<p className="font-jost text-xl">
+								{products.description}
+							</p>
 
 							<div className="flex gap-10">
 								<div>
@@ -157,23 +158,22 @@ const ProductDetails = () => {
 								</div>
 								<div
 									style={{
-										color:
-											products.report === "reported"
-												? "red"
-												: " ",
-									}}
-									className="text-xl font-bold">
-									{products.report === "reported" ? (
+										color: products.report === "reported" ? "red" : " ",
+												
+									}} className="text-xl font-bold">
+									
+									{ products?.report === "reported" ? (
 										"Reported"
 									) : (
 										<button
-											className="btn bg-red-600 text-white text-xl"
+											
 											onClick={() =>
 												handleReport(products._id)
-											}>
+											}   hidden={products?.report==='reported'} className="btn bg-red-600 text-white text-xl">
 											Report
 										</button>
 									)}
+									
 								</div>
 							</div>
 						</div>
