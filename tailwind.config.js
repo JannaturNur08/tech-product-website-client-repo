@@ -20,7 +20,7 @@ export default {
         hoverColor : '#0078ff',
       },
       textColor : {
-        textColor : "#002b44",
+        textColor : "#002B44",
       }
     },
   },

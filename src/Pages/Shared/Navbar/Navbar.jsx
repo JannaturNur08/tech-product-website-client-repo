@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
 import useModerator from "../../../hooks/useModerator";
-import './Navbar.css';
+import "./Navbar.css";
 
 const Navbar = () => {
 	const { user, logOut } = useAuth();
@@ -19,7 +19,7 @@ const Navbar = () => {
 	const navOptions = (
 		<>
 			<li>
-			<NavLink
+				<NavLink
 					to="/"
 					className={({ isActive, isPending }) =>
 						isPending ? "pending" : isActive ? "active " : ""
@@ -28,7 +28,6 @@ const Navbar = () => {
 				</NavLink>
 			</li>
 			<li>
-				
 				<NavLink
 					to="/products"
 					className={({ isActive, isPending }) =>
@@ -40,9 +39,13 @@ const Navbar = () => {
 
 			{!user ? (
 				<li>
-					<NavLink to="/login" className={({ isActive, isPending }) =>
-						isPending ? "pending" : isActive ? "active " : ""
-					}>LOGIN</NavLink>
+					<NavLink
+						to="/login"
+						className={({ isActive, isPending }) =>
+							isPending ? "pending" : isActive ? "active " : ""
+						}>
+						LOGIN
+					</NavLink>
 				</li>
 			) : (
 				""
@@ -51,10 +54,7 @@ const Navbar = () => {
 	);
 	return (
 		<div>
-			<div className="navbar bg-base-100 text-xl sticky-header text-textColor">
-				<div className="flex-1">
-					<a className="  text-2xl">MatraTech</a>
-				</div>
+			<div className="navbar  bg-base-100 text-xl sticky-header text-textColor">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -74,16 +74,21 @@ const Navbar = () => {
 						</label>
 						<ul
 							tabIndex={0}
-							className="menu menu-compact dropdown-content mt-3 p-2  rounded-box w-52">
+							className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-semibold">
 							{navOptions}
 						</ul>
 					</div>
+					<a className="btn btn-ghost normal-case text-base lg:text-3xl">
+						MatraTech
+					</a>
 				</div>
 				<div className="navbar-center hidden lg:flex">
-					<ul className="flex gap-6 px-1  font-mercellus text-base">{navOptions}</ul>
+					<ul className="flex gap-6 px-1  font-mercellus text-base">
+						{navOptions}
+					</ul>
 				</div>
 				<div className="navbar-end">
-					{user ? (
+					{user ?.email? (
 						<>
 							<div className="dropdown dropdown-end">
 								<label

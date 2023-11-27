@@ -6,10 +6,18 @@ a.active {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+   width: 100%;
+   padding: 0 100px 0 100px;
      background-color: white;
     /* color: #fff; */ 
-    padding: 10px;
+    
     text-align: center;
     z-index: 100; 
+}
+
+
+@media screen and (max-width: 768px) {
+  .navbar{
+    padding:  0 20px 0 20px;
+  }
 }
