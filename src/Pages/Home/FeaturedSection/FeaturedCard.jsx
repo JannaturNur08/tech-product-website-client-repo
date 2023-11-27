@@ -4,11 +4,14 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useSortByTimestampFeatured from "../../../hooks/useSortByTimestampFeatured";
 import useAuth from "../../../hooks/useAuth";
 const FeaturedCard = ({ item }) => {
-	const { user } = useAuth();
+	const { user,loading } = useAuth();
 	const { product_name, timestamp, tags, image, vote, _id, ownerEmail } =
 		item;
 	const axiosPublic = useAxiosPublic();
 	const [products, refetch] = useSortByTimestampFeatured();
+    if(loading){
+        refetch();
+    }
 
 	const handleUpvote = async (productId) => {
 		console.log("button clicked inside featured button");
