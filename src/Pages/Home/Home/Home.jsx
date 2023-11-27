@@ -1,9 +1,11 @@
+import FeaturedSection from "../FeaturedSection/FeaturedSection";
 
 
 const Home = () => {
     return (
         <div>
             <h2>this is home</h2>
+            <FeaturedSection></FeaturedSection>
         </div>
     );
 };

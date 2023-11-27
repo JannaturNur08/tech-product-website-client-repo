@@ -116,7 +116,9 @@ const ReviewProducts = () => {
 											onClick={() =>
 												handleAccept(item._id)
 											}
-											className="btn bg-green-500 btn-md text-white">
+											className="btn bg-green-500 btn-md text-white"
+											disabled={ item.status==='rejected'}
+											>
 											Accept
 										</button>
 									)}
@@ -129,7 +131,9 @@ const ReviewProducts = () => {
 											onClick={() =>
 												handleReject(item._id)
 											}
-											className="btn bg-red-500 btn-md text-white">
+											className="btn bg-red-500 btn-md text-white"
+											disabled={ item.status==='accepted'}
+											>
 											Reject
 										</button>
 									)}
@@ -142,7 +146,7 @@ const ReviewProducts = () => {
 											onClick={() =>
 												handleFeatured(item._id)
 											}
-											className="btn btn-outline btn-accent btn-md text-white" disabled={item.status!=='accepted'}>
+											className="btn btn-outline btn-accent btn-md text-white" disabled={item.status!=='accepted' || item.status==='rejected'}>
 											Make featured
 										</button>
 									)}
