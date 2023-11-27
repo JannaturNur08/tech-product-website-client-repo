@@ -13,7 +13,7 @@ export default {
        
       },
       colors : {
-        primary : "#53624E",
+        primary : "#002B44",
         
       },
       hover : {

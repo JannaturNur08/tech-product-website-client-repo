@@ -9,6 +9,8 @@ import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 import useProductsById from "../../../hooks/useProductsById";
 import useReviews from "../../../hooks/useReviews";
+import { useState } from "react";
+import ReviewForm from "./ReviewForm";
 // import Rating from "react-rating";
 
 const ProductDetails = () => {
@@ -17,8 +19,12 @@ const ProductDetails = () => {
 	const productDetails = useLoaderData();
 	const productId = productDetails._id;
 	const [products, refetch] = useProductsById(productId);
-    const [reviews, reviewsRefetch] = useReviews(productId);
+	const [reviews, reviewsRefetch] = useReviews(productId);
+	const [isReviewFormVisible, setReviewFormVisibility] = useState(false);
 	console.log(products);
+	const handleReviewButtonClick = () => {
+		setReviewFormVisibility(!isReviewFormVisible);
+	};
 
 	const handleUpvote = async (productId) => {
 		console.log("button clicked inside featured button");
@@ -129,7 +135,7 @@ const ProductDetails = () => {
 							</p>
 
 							<div className="flex gap-10">
-								<div>
+								<div className="flex gap-5">
 									<button
 										className="btn btn-ghost text-xl"
 										onClick={() =>
@@ -151,62 +157,86 @@ const ProductDetails = () => {
 										<BiDownvote />
 									</button>
 								</div>
-								
+
 								<div
 									style={{
-										color: products.report === "reported" ? "red" : " ",
-												
-									}} className="text-xl font-bold">
-									
-									{ products?.report === "reported" ? (
+										color:
+											products.report === "reported"
+												? "red"
+												: " ",
+									}}
+									className="text-xl font-bold">
+									{products?.report === "reported" ? (
 										"Reported"
 									) : (
 										<button
-											
 											onClick={() =>
 												handleReport(products._id)
-											}   hidden={products?.report==='reported'} className="btn bg-red-600 text-white text-xl">
+											}
+											hidden={
+												products?.report === "reported"
+											}
+											className="btn bg-red-600 text-white text-xl">
 											Report
 										</button>
 									)}
-									
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-{/* get reviews from database */}
+				{/* get reviews from database */}
 				<div className="lg:ml-20">
 					<h2 className="font-mercellus text-3xl">Reviews</h2>
-                    <button className="btn btn-info text-xl text-white mt-5">Post Review</button>
-                    <div className="mt-10 border-2 p-10 rounded-2xl">
-							{reviews.map((review, idx) => (
-								<div key={idx} className="mb-10">
-									<div className="flex flex-row gap-10">
-										<p className="font-mercellus text-xl font-medium">
-											{review.name}
-										</p>
-										<div className="flex flex-row gap-2">
-											<p className="text-2xl">
-												({review.rating})
+					{/* post review */}
+					<div>
+						<button
+							className="btn btn-info text-xl text-white mt-5"
+							onClick={handleReviewButtonClick}>
+							Post Review
+						</button>
+						{isReviewFormVisible && (
+							// Render your review form component here
+							<ReviewForm
+								productId={productId}
+								reviewsRefetch={reviewsRefetch}></ReviewForm>
+						)}
+					</div>
+					<div>
+						{ reviews.length >0 ? (
+							<div className="mt-10 border-2 p-10 rounded-2xl">
+								{reviews.map((review, idx) => (
+									<div key={idx} className="mb-10">
+										<div className="flex flex-row gap-10">
+											<p className="font-mercellus text-xl font-medium">
+												{review.name}
 											</p>
-											<div className="pt-1">
-												<Rating
-													style={{ maxWidth: 100 }}
-													readOnly
-													orientation="horizontal"
-													value={review.rating}
-												/>
+											<div className="flex flex-row gap-2">
+												<p className="text-2xl">
+													({review.rating})
+												</p>
+												<div className="pt-1">
+													<Rating
+														style={{
+															maxWidth: 100,
+														}}
+														readOnly
+														orientation="horizontal"
+														value={review.rating}
+													/>
+												</div>
 											</div>
 										</div>
+
+										<p className="mt-2">{review.comment}</p>
 									</div>
-
-									<p className="mt-2">{review.comment}</p>
-								</div>
-							))}
-						</div>
-
+								))}
+							</div>
+						) : (
+							<p className="text-2xl mt-10 font-bold text-textColor">No Reviews Yet</p>
+						)}
+					</div>
 				</div>
 			</div>
 		</div>
