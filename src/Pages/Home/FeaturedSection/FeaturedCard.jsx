@@ -72,7 +72,7 @@ const FeaturedCard = ({ item }) => {
 				</figure>
 				<div className="card-body">
 					<Link to={`/productDetails/${_id}`}>
-						<h2 className="card-title">{product_name}</h2>
+						<h2 className="card-title max-w-[200px]">{product_name}</h2>
 					</Link>
 					<div className="space-y-3">
 						{tags.map((tag, index) => (

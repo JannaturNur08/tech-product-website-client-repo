@@ -7,11 +7,11 @@
 		"tags": ["camera", "photography", "DSLR"],
 		"facebook_external_link": "https://www.facebook.com/canon",
 		"google_external_link": "https://www.google.com/canon",
-		"status": "pending",
+		"status": "accepted",
 		"timestamp": "November 26th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"featured": "pending",
+		"featured": "featured",
 		"report": "pending"
 	},
 	{
@@ -22,12 +22,12 @@
 		"tags": ["go-pro", "action camera", "adventure"],
 		"facebook_external_link": "https://www.facebook.com/gopro",
 		"google_external_link": "https://www.google.com/gopro",
-		"status": "pending",
+		"status": "accepted",
 		"timestamp": "November 20th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"featured": "pending",
-		"report": "pending"
+		"featured": "featured",
+		"report": "reported"
 	},
 	{
 		"ownerEmail": "matrix@gmail.com",
@@ -56,7 +56,7 @@
 		"timestamp": "November 21th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"featured": "pending",
+		"featured": "featured",
 		"report": "pending"
 	},
 	{
@@ -67,12 +67,12 @@
 		"tags": ["keyboard", "gaming", "mechanical keyboard"],
 		"facebook_external_link": "https://www.facebook.com/logitech",
 		"google_external_link": "https://www.google.com/logitech",
-		"status": "pending",
+		"status": "accepted",
 		"timestamp": "November 23th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"featured": "pending",
-		"report": "pending"
+		"featured":"featured",
+		"report": "reported"
 	},
 	{
 		"ownerEmail": "zinat@gmail.com",
@@ -82,7 +82,7 @@
 		"tags": ["MacBook", "laptop", "creative"],
 		"facebook_external_link": "https://www.facebook.com/apple",
 		"google_external_link": "https://www.google.com/apple",
-		"status": "pending",
+		"status": "accepted",
 		"timestamp": "November 24th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
@@ -146,7 +146,7 @@
 		"timestamp": "November 24th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"featured": "pending",
+		"featured": "featured",
 		"report": "pending"
 	},
 	{
@@ -161,7 +161,7 @@
 		"timestamp": "November 25th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"featured": "pending",
-		"report": "pending"
+		"featured": "featured",
+		"report": "reported"
 	}
 ]

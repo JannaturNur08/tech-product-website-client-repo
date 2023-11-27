@@ -18,7 +18,7 @@ import AddProduct from "../Pages/Dashboard/Users/AddProduct/AddProduct";
 import MyProducts from "../Pages/Dashboard/Users/MyProducts/MyProducts";
 import UpdateProduct from "../Pages/Dashboard/Users/UpdateProduct.jsx/UpdateProduct";
 import ProductDetails from "../Pages/Home/ProductDetails/ProductDetails";
-import FeaturedSection from "../Pages/Home/FeaturedSection/FeaturedSection";
+
 
 export const router = createBrowserRouter([
 	{
