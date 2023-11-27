@@ -1,0 +1,32 @@
+[
+	{
+		"productId": "6564f8d0d567f6ece0e84e8b",
+		"name": "John Doe",
+		"rating": 4.5,
+		"comment": "Great product! Very satisfied with my purchase."
+	},
+	{
+		"productId": "6564f8d0d567f6ece0e84e8b",
+		"name": "Alice Smith",
+		"rating": 3.8,
+		"comment": "The product is good, but it could use some improvements."
+	},
+	{
+		"productId": "6564f8d0d567f6ece0e84e90",
+		"name": "Bob Johnson",
+		"rating": 5.0,
+		"comment": "Exceptional quality. Would highly recommend!"
+	},
+	{
+		"productId": "6564f8d0d567f6ece0e84e90",
+		"name": "Eva Williams",
+		"rating": 2.5,
+		"comment": "Not as expected. Disappointed with the product."
+	},
+	{
+		"productId": "66564f8d0d567f6ece0e84e8c",
+		"name": "Chris Davis",
+		"rating": 4.0,
+		"comment": "Good value for money. Happy with my purchase."
+	}
+]

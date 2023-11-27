@@ -1,12 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 // import { Helmet } from "react-helmet-async";
-// import { Rating } from "@smastrom/react-rating";
+import { Rating } from "@smastrom/react-rating";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 import useProductsById from "../../../hooks/useProductsById";
+import useReviews from "../../../hooks/useReviews";
+// import Rating from "react-rating";
 
 const ProductDetails = () => {
 	const { user } = useAuth();
@@ -14,6 +16,7 @@ const ProductDetails = () => {
 	const productDetails = useLoaderData();
 	const productId = productDetails._id;
 	const [products, refetch] = useProductsById(productId);
+    const [reviews, reviewsRefetch] = useReviews(productId);
 	console.log(products);
 
 	const handleUpvote = async (productId) => {
@@ -90,8 +93,8 @@ const ProductDetails = () => {
 	return (
 		<div>
 			{/* ... (other parts of the component) */}
-			<div>
-				<div className="flex mx-auto container lg:mt-24 lg:gap-10">
+			<div className="mx-auto container ">
+				<div className="flex lg:mt-24 lg:gap-10">
 					<div>
 						<img src={products.image} alt="" />
 					</div>
@@ -147,15 +150,7 @@ const ProductDetails = () => {
 										<BiDownvote />
 									</button>
 								</div>
-								<div>
-									<button
-										className="btn bg-red-600 text-white text-xl"
-										onClick={() =>
-											handleReport(products._id)
-										}>
-										Report
-									</button>
-								</div>
+								
 								<div
 									style={{
 										color: products.report === "reported" ? "red" : " ",
@@ -182,6 +177,33 @@ const ProductDetails = () => {
 
 				<div>
 					<h2 className="font-mercellus text-3xl">Reviews</h2>
+                    <div className="grid grid-cols-2 mt-10 gap-3">
+							{reviews.map((review, idx) => (
+								<div key={idx}>
+									<div className="flex flex-row gap-5">
+										<p className="font-mercellus text-xl font-medium">
+											{review.userName}
+										</p>
+										<div className="flex flex-row gap-2">
+											<p className="text-2xl">
+												({review.rating})
+											</p>
+											<div className="pt-1">
+												<Rating
+													style={{ maxWidth: 100 }}
+													readOnly
+													orientation="horizontal"
+													value={review.rating}
+												/>
+											</div>
+										</div>
+									</div>
+
+									<p>{review.comment}</p>
+								</div>
+							))}
+						</div>
+
 				</div>
 			</div>
 		</div>
