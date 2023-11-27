@@ -194,7 +194,7 @@ const ProductDetails = () => {
 						<button
 							className="btn btn-info text-xl text-white mt-5"
 							onClick={handleReviewButtonClick}>
-							Post Review
+							 {isReviewFormVisible ? 'Hide Review Form' : 'Post Review'}
 						</button>
 						{isReviewFormVisible && (
 							// Render your review form component here
@@ -208,28 +208,34 @@ const ProductDetails = () => {
 							<div className="mt-10 border-2 p-10 rounded-2xl">
 								{reviews.map((review, idx) => (
 									<div key={idx} className="mb-10">
-										<div className="flex flex-row gap-10">
-											<p className="font-mercellus text-xl font-medium">
+										<div className="flex gap-5">
+                                            <div>
+                                            <img src={user.photoURL} alt=""  className="w-[100px] h-[100px] rounded-full "/>
+											
+                                            </div>
+											<div >
+                                            <p className="font-mercellus text-3xl font-medium">
 												{review.name}
 											</p>
-											<div className="flex flex-row gap-2">
-												<p className="text-2xl">
-													({review.rating})
-												</p>
-												<div className="pt-1">
+												
+												<div className="pt-1 flex gap-1">
+                                                
+													
+												
 													<Rating
 														style={{
-															maxWidth: 100,
+															maxWidth: 150,
 														}}
 														readOnly
 														orientation="horizontal"
 														value={review.rating}
 													/>
+                                                    <div className="text-2xl">({review.rating})</div>
 												</div>
 											</div>
 										</div>
 
-										<p className="mt-2">{review.comment}</p>
+										<p className="mt-4 text-xl">{review.comment}</p>
 									</div>
 								))}
 							</div>

@@ -14,6 +14,7 @@ const ReviewForm = ({ productId, reviewsRefetch }) => {
         if (data.name && data.rating && data.description) {
             const newReview = {
                 productId: productId,
+                image: user.photoURL,
                 name: data.name,
                 rating: data.rating,
                 comment: data.description,
