@@ -34,6 +34,32 @@ const FeaturedCard = ({ item }) => {
 			);
 		}
 	};
+	const handleDownVote = async (productId) => {
+		console.log("button clicked inside featured button");
+		try {
+			if(vote>0){
+                await axiosPublic.patch(`/api/upvote/${productId}`, {
+				    vote: vote - 1,
+                });
+    
+                // Update the state with the new status
+                const newProducts = products.map((product) =>
+                    product._id === productId
+                        ? { ...product, vote: vote - 1 }
+                        : product
+                );
+                console.log(newProducts);
+    
+                refetch(newProducts);
+                console.log(newProducts);
+            }
+		} catch (error) {
+			console.error(
+				`Error marking product ${productId} as featured:`,
+				error
+			);
+		}
+	};
 	return (
 		<div>
 			<div className="card  lg:card-side bg-base-100 ">
@@ -67,7 +93,10 @@ const FeaturedCard = ({ item }) => {
 									disabled={user?.email === ownerEmail}>
 									<BiUpvote /> {vote}
 								</button>
-								<button className="btn btn-ghost text-xl">
+								<button className="btn btn-ghost text-xl" 
+                                onClick={() => handleDownVote(_id)}
+                                disabled={user?.email === ownerEmail}
+                                >
 									<BiDownvote />
 								</button>
 							</>
