@@ -7,8 +7,8 @@ a.active {
     top: 0;
     left: 0;
    width: 100%;
-   padding: 0 100px 0 100px;
-     background-color: white;
+   padding: 20px 100px 20px 100px;
+     background-color: #002B44;
     /* color: #fff; */ 
     
     text-align: center;

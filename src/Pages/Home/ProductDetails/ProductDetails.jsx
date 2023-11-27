@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 // import { Helmet } from "react-helmet-async";
 import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
@@ -175,14 +176,16 @@ const ProductDetails = () => {
 					</div>
 				</div>
 
-				<div>
+{/* get reviews from database */}
+				<div className="lg:ml-20">
 					<h2 className="font-mercellus text-3xl">Reviews</h2>
-                    <div className="grid grid-cols-2 mt-10 gap-3">
+                    <button className="btn btn-info text-xl text-white mt-5">Post Review</button>
+                    <div className="mt-10 border-2 p-10 rounded-2xl">
 							{reviews.map((review, idx) => (
-								<div key={idx}>
-									<div className="flex flex-row gap-5">
+								<div key={idx} className="mb-10">
+									<div className="flex flex-row gap-10">
 										<p className="font-mercellus text-xl font-medium">
-											{review.userName}
+											{review.name}
 										</p>
 										<div className="flex flex-row gap-2">
 											<p className="text-2xl">
@@ -199,7 +202,7 @@ const ProductDetails = () => {
 										</div>
 									</div>
 
-									<p>{review.comment}</p>
+									<p className="mt-2">{review.comment}</p>
 								</div>
 							))}
 						</div>

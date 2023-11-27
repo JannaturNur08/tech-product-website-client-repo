@@ -33,7 +33,7 @@ const Navbar = () => {
 					className={({ isActive, isPending }) =>
 						isPending ? "pending" : isActive ? "active " : ""
 					}>
-					OUR PRODUCTS
+					 PRODUCTS
 				</NavLink>
 			</li>
 
@@ -54,7 +54,7 @@ const Navbar = () => {
 	);
 	return (
 		<div>
-			<div className="navbar  bg-base-100 text-xl sticky-header text-textColor">
+			<div className="navbar  bg-[#002B44] text-xl sticky-header text-white ">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -100,11 +100,11 @@ const Navbar = () => {
 								</label>
 								<ul
 									tabIndex={0}
-									className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-									<li>
-										<a className="justify-between">
-											{user.displayName}
-										</a>
+									className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#002B44] rounded-box w-52">
+									<li >
+										
+											<p className="justify-between">{user.displayName}</p>
+									
 									</li>
 									<li>
 										{" "}
