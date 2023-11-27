@@ -1,8 +1,39 @@
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { Link } from "react-router-dom";
-const FeaturedCard = ({ item, refetch }) => {
-	const { product_name, timestamp, tags, image, vote, _id } = item;
-	refetch();
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useSortByTimestampFeatured from "../../../hooks/useSortByTimestampFeatured";
+import useAuth from "../../../hooks/useAuth";
+const FeaturedCard = ({ item }) => {
+	const { user } = useAuth();
+	const { product_name, timestamp, tags, image, vote, _id, ownerEmail } =
+		item;
+	const axiosPublic = useAxiosPublic();
+	const [products, refetch] = useSortByTimestampFeatured();
+
+	const handleUpvote = async (productId) => {
+		console.log("button clicked inside featured button");
+		try {
+			await axiosPublic.patch(`/api/upvote/${productId}`, {
+				vote: vote + 1,
+			});
+
+			// Update the state with the new status
+			const newProducts = products.map((product) =>
+				product._id === productId
+					? { ...product, vote: vote + 1 }
+					: product
+			);
+			console.log(newProducts);
+
+			refetch(newProducts);
+			console.log(newProducts);
+		} catch (error) {
+			console.error(
+				`Error marking product ${productId} as featured:`,
+				error
+			);
+		}
+	};
 	return (
 		<div>
 			<div className="card  lg:card-side bg-base-100 ">
@@ -28,13 +59,21 @@ const FeaturedCard = ({ item, refetch }) => {
 						<p>{timestamp}</p>
 					</div>
 					<div className="card-actions justify-start">
-						<button className="btn btn-ghost text-xl">
-							<BiUpvote /> {vote}
-						</button>
-						<button className="btn btn-ghost text-xl">
-							<BiDownvote />
-							{vote}
-						</button>
+						{user ? (
+							<>
+								<button
+									className="btn btn-ghost text-xl"
+									onClick={() => handleUpvote(_id)}
+									disabled={user?.email === ownerEmail}>
+									<BiUpvote /> {vote}
+								</button>
+								<button className="btn btn-ghost text-xl">
+									<BiDownvote />
+								</button>
+							</>
+						) : (
+							<Link to="/login" className="btn btn-outline">Login To Vote <BiUpvote /> {vote}</Link>
+						)}
 					</div>
 				</div>
 			</div>

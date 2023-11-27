@@ -18,6 +18,7 @@ import AddProduct from "../Pages/Dashboard/Users/AddProduct/AddProduct";
 import MyProducts from "../Pages/Dashboard/Users/MyProducts/MyProducts";
 import UpdateProduct from "../Pages/Dashboard/Users/UpdateProduct.jsx/UpdateProduct";
 import ProductDetails from "../Pages/Home/ProductDetails/ProductDetails";
+import FeaturedSection from "../Pages/Home/FeaturedSection/FeaturedSection";
 
 export const router = createBrowserRouter([
 	{
@@ -30,6 +31,12 @@ export const router = createBrowserRouter([
 				element: <Home></Home>,
 			},
 			{
+				path: "/",
+				element: <PrivateRoute>
+					<FeaturedSection></FeaturedSection>
+				</PrivateRoute>,
+			},
+			{
 				path: "login",
 				element: <Login></Login>,
 			},
@@ -39,7 +46,9 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "productDetails/:id",
-				element: <ProductDetails></ProductDetails>,
+				element: <PrivateRoute>
+					<ProductDetails></ProductDetails>
+				</PrivateRoute>,
 			},
 		],
 	},

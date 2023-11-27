@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import useMyProducts from "../../../../hooks/useMyProducts";
-import { FaEdit, FaTrashAlt, FaUpload } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const MyProducts = () => {
