@@ -17,7 +17,7 @@ const FeaturedSection = () => {
 			<TilteSection title="Featured Products"></TilteSection>
 			<div className="grid md:grid-cols-2 gap-10 my-16 mx-auto container">
 			{Array.isArray(products)
-					? products.slice(0, 6).map((item) => (
+					? products.slice(0, 4).map((item) => (
 							<FeaturedCard
 								key={item._id}
 								item={item}
