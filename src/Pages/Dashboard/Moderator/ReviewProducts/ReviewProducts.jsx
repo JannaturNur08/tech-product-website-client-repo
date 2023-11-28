@@ -96,7 +96,7 @@ const ReviewProducts = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{products.map((item, index) => (
+						{ Array.isArray(products)?products.map((item, index) => (
 							<tr key={item._id}>
 								<th>{index + 1}</th>
 								<th>{item.product_name}</th>
@@ -152,7 +152,7 @@ const ReviewProducts = () => {
 									)}
 								</th>
 							</tr>
-						))}
+						)) : null}
 					</tbody>
 				</table>
 			</div>

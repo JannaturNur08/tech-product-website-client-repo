@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
 import TilteSection from "../../../components/TitleSection/TilteSection";
-import useSortByVoteTrending from "../../../hooks/useSortByVoteTrending";
+
 import TrendingCard from "./TrendingCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import useSortByAccepted from "../../../hooks/useSortByAccepted";
+import { useEffect } from "react";
 
 
 const TrendingSection = () => {
 	const settings = {
 		dots: true,
-		infinite: true,
+		infinite: false,
 		slidesToShow: 3,
 		slidesToScroll: 1,
-		autoplay: true,
+		autoplay: false,
 		speed: 1000,
 		autoplaySpeed: 1000,
 		cssEase: "linear",
@@ -25,7 +26,11 @@ const TrendingSection = () => {
 		return a.vote > b.vote ? -1 : 1;
 	}) : null;
 	
-	refetch();
+	useEffect(()=> {
+		refetch();
+	}
+		
+		,[refetch])
 	return (
 		<div className="mx-auto container mb-10">
 			<TilteSection title="Trending Products"></TilteSection>
