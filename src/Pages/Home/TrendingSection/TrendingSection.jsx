@@ -27,7 +27,7 @@ const TrendingSection = () => {
 	
 	refetch();
 	return (
-		<div>
+		<div className="mx-auto container mb-10">
 			<TilteSection title="Trending Products"></TilteSection>
 			<div className=" gap-5 my-16 mx-auto container">
 				<Slider {...settings}>
@@ -45,8 +45,8 @@ const TrendingSection = () => {
 
 				
 			</div>
-			<Link to="/products">
-					<button className=" btn bg-primary text-white">
+			<Link to="/products" className="flex justify-center">
+					<button className=" btn bg-primary text-white px-5 py-2">
 						Show All Products
 					</button>
 				</Link>
