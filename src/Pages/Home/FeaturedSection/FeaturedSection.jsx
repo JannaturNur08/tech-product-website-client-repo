@@ -2,13 +2,18 @@
 import FeaturedCard from "./FeaturedCard";
 import useSortByTimestampFeatured from "../../../hooks/useSortByTimestampFeatured";
 import TilteSection from "../../../components/TitleSection/TilteSection";
+import { useEffect } from "react";
 
 const FeaturedSection = () => {
 	const [products,refetch] = useSortByTimestampFeatured();
-	refetch();
-    console.log(products);
+	//refetch();
+    //console.log(products);
 	
-	
+	useEffect(()=> {
+		refetch();
+	}
+		
+		,[refetch])
 
 	
 

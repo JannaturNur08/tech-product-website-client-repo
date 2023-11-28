@@ -12,8 +12,8 @@ const Login = () => {
 	const { logIn } = useAuth();
 	const [errors, setErrors] = useState("");
 	const navigate = useNavigate();
-	const location = useLocation();
-	const from = location?.state?.from?.pathname || "/";
+	//const location = useLocation();
+	//const from = location?.state?.from?.pathname || "/";
 	const handleLogin = (event) => {
 		event.preventDefault();
 		const form = event.target;
@@ -35,7 +35,7 @@ const Login = () => {
 						popup: "animate__animated animate__fadeOutUp",
 					},
 				});
-				navigate(from, { replace: true });
+				navigate('/');
 			})
 			.catch((error) => {
 				const errorCode = error.code;

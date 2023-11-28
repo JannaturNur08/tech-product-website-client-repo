@@ -33,7 +33,7 @@ const Navbar = () => {
 					className={({ isActive, isPending }) =>
 						isPending ? "pending" : isActive ? "active " : ""
 					}>
-					 PRODUCTS
+					PRODUCTS
 				</NavLink>
 			</li>
 
@@ -88,7 +88,7 @@ const Navbar = () => {
 					</ul>
 				</div>
 				<div className="navbar-end">
-					{user ?.email? (
+					{user?.email ? (
 						<>
 							<div className="dropdown dropdown-end">
 								<label
@@ -101,10 +101,10 @@ const Navbar = () => {
 								<ul
 									tabIndex={0}
 									className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#002B44] rounded-box w-52">
-									<li >
-										
-											<p className="justify-between">{user.displayName}</p>
-									
+									<li>
+										<p className="justify-between">
+											{user.displayName}
+										</p>
 									</li>
 									<li>
 										{" "}
