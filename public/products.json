@@ -52,7 +52,7 @@
 		"tags": ["iPhone", "smartphone", "iOS"],
 		"facebook_external_link": "https://www.facebook.com/apple",
 		"google_external_link": "https://www.google.com/apple",
-		"status": "pending",
+		"status": "accepted",
 		"timestamp": "November 21th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
@@ -142,7 +142,7 @@
 		"tags": ["speaker", "Bluetooth", "portable"],
 		"facebook_external_link": "https://www.facebook.com/jbl",
 		"google_external_link": "https://www.google.com/jbl",
-		"status": "pending",
+		"status": "accepted",
 		"timestamp": "November 24th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
@@ -161,7 +161,7 @@
 		"timestamp": "November 25th 2023, 1:43:32 pm",
 		"vote": 0,
 		"votedUsers": [],
-		"featured": "featured",
+		"featured": "pending",
 		"report": "reported"
 	}
 ]

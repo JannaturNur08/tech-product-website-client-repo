@@ -18,6 +18,7 @@ import AddProduct from "../Pages/Dashboard/Users/AddProduct/AddProduct";
 import MyProducts from "../Pages/Dashboard/Users/MyProducts/MyProducts";
 import UpdateProduct from "../Pages/Dashboard/Users/UpdateProduct.jsx/UpdateProduct";
 import ProductDetails from "../Pages/Home/ProductDetails/ProductDetails";
+import Products from "../Pages/Products/Products";
 
 
 export const router = createBrowserRouter([
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
 			{
 				path: "signup",
 				element: <SignUp></SignUp>,
+			},
+			{
+				path: "products",
+				element: <Products></Products>,
 			},
 			{
 				path: "productDetails/:id",

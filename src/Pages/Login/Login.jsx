@@ -2,9 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
-
 import { useState } from "react";
-
 
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
@@ -15,7 +13,7 @@ const Login = () => {
 	const [errors, setErrors] = useState("");
 	const navigate = useNavigate();
 	const location = useLocation();
-	const from = location?.state?.from?.pathname || '/';
+	const from = location?.state?.from?.pathname || "/";
 	const handleLogin = (event) => {
 		event.preventDefault();
 		const form = event.target;
@@ -37,9 +35,7 @@ const Login = () => {
 						popup: "animate__animated animate__fadeOutUp",
 					},
 				});
-				navigate(from, {replace: true});
-
-				
+				navigate(from, { replace: true });
 			})
 			.catch((error) => {
 				const errorCode = error.code;
@@ -49,8 +45,8 @@ const Login = () => {
 			});
 	};
 	return (
-		<div className="lg:w-3/4 mx-auto mt-20">
-			<h2 className="font-mercellus lg:text-4xl">Login</h2>
+		<div className="lg:w-3/4 mx-auto mt-40">
+			<h2 className="font-mercellus text-4xl">Login</h2>
 			<form onSubmit={handleLogin}>
 				<div className="form-control">
 					<label className="label">
