@@ -1,25 +1,27 @@
 import FeaturedCard from "./FeaturedCard";
 import useSortByTimestampFeatured from "../../../hooks/useSortByTimestampFeatured";
 import TilteSection from "../../../components/TitleSection/TilteSection";
+import { useEffect } from "react";
 // import { useEffect } from "react";
 
 const FeaturedSection = () => {
-	const [products, refetch] = useSortByTimestampFeatured();
-	refetch();
-	//console.log(products);
-
-	// useEffect(()=> {
-	// 	refetch();
-	// }
-
-	// 	,[refetch])
+	const [featuredProducts, refetch] = useSortByTimestampFeatured();
+	const sortedProducts = Array.isArray(featuredProducts)?featuredProducts.sort((a,b)=> {
+		return a.timestamp > b.timestamp ? -1 : 1;
+	}) : null;
+	
+	useEffect(()=> {
+		refetch();
+	}
+		
+		,[refetch])
 
 	return (
 		<div>
 			<TilteSection title="Featured Products"></TilteSection>
 			<div className="grid md:grid-cols-2 gap-10 my-16 mx-auto container">
-				{Array.isArray(products)
-					? products
+				{Array.isArray(sortedProducts)
+					? sortedProducts
 							.slice(0, 4)
 							.map((item) => (
 								<FeaturedCard

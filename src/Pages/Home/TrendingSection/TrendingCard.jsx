@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import useSortByVoteTrending from "../../../hooks/useSortByVoteTrending";
+import useSortByAccepted from "../../../hooks/useSortByAccepted";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 
 
@@ -11,7 +11,7 @@ const TrendingCard = ({ item }) => {
 	const { user } = useAuth();
 
 	const axiosPublic = useAxiosPublic();
-	const [products, refetch] = useSortByVoteTrending();
+	const [products, refetch] = useSortByAccepted();
 	
 	
 	const handleUpvote = async (productId) => {

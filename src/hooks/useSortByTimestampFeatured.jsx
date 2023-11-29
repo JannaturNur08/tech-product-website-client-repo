@@ -4,14 +4,14 @@ import useAxiosPublic from "./useAxiosPublic";
 const useSortByTimestampFeatured = () => {
 	const axiosPublic = useAxiosPublic();
 
-	const { refetch, data: products = [] } = useQuery({
-		queryKey: ["products"],
+	const { refetch, data: featuredProducts = [] } = useQuery({
+		queryKey: ["featuredProducts"],
 		queryFn: async () => {
 			const res = await axiosPublic.get("/api/featuredProducts");
             return res.data;
 		},
 	});
-	return [products, refetch];
+	return [featuredProducts, refetch];
 };
 
 export default useSortByTimestampFeatured;
