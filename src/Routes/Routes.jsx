@@ -21,7 +21,6 @@ import ProductDetails from "../Pages/Home/ProductDetails/ProductDetails";
 import Products from "../Pages/Products/Products";
 import Payment from "../Pages/Dashboard/Users/MyProfile/Payment";
 
-
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -32,7 +31,7 @@ export const router = createBrowserRouter([
 				path: "/",
 				element: <Home></Home>,
 			},
-			
+
 			{
 				path: "login",
 				element: <Login></Login>,
@@ -47,12 +46,16 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "productDetails/:id",
-				element: <PrivateRoute>
-					<ProductDetails></ProductDetails>
-				</PrivateRoute>,
-				loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
+				element: (
+					<PrivateRoute>
+						<ProductDetails></ProductDetails>
+					</PrivateRoute>
+				),
+				loader: ({ params }) =>
+					fetch(
+						`https://b8a12-server-side-jannatur-nur08.vercel.app/products/${params.id}`
+					),
 			},
-			
 		],
 	},
 	{
@@ -64,7 +67,6 @@ export const router = createBrowserRouter([
 		),
 		errorElement: <ErrorPage></ErrorPage>,
 		children: [
-
 			// user routes
 			{
 				path: "myProfile",
@@ -81,14 +83,16 @@ export const router = createBrowserRouter([
 			{
 				path: "updateProducts/:id",
 				element: <UpdateProduct></UpdateProduct>,
-				loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
+				loader: ({ params }) =>
+					fetch(
+						`https://b8a12-server-side-jannatur-nur08.vercel.app/products/${params.id}`
+					),
 			},
 			{
 				path: "payment",
 				element: <Payment></Payment>,
-				
 			},
-			
+
 			// admin routes
 			{
 				path: "statistics",
@@ -132,8 +136,6 @@ export const router = createBrowserRouter([
 					</ModeratorRoute>
 				),
 			},
-
-			
 		],
 	},
 ]);
