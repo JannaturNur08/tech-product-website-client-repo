@@ -9,6 +9,7 @@ const Products = () => {
 	const [products] = useSortByAccepted();
 	const searchRef = useRef(null);
 	const [search, setSearch] = useState("");
+	const [error, setError] = useState("");
 
 	const { refetch, data: searchProducts = [] } = useQuery({
 		queryKey: ["searchProducts", search],
@@ -21,8 +22,12 @@ const Products = () => {
 	const handleSearch = () => {
        
 		setSearch(searchRef.current.value);
+		if(!search){
+			setError('Please add accurate tag to search');
+			refetch();
+		}
         
-		refetch();
+		
 	};
 
     refetch();
@@ -68,6 +73,7 @@ const Products = () => {
 								product={product}></ProductCard>
 					  ))}
 			</div>
+			<h2 className="text-red-500 text-3xl text-center">{error}</h2>
 		</div>
 	);
 };

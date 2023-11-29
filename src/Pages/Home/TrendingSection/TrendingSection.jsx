@@ -19,6 +19,7 @@ const TrendingSection = () => {
 		speed: 1000,
 		autoplaySpeed: 1000,
 		cssEase: "linear",
+		
 	};
 
 	const [products, refetch] = useSortByAccepted();
