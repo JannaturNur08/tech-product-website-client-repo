@@ -9,28 +9,50 @@ const Products = () => {
 	const [products] = useSortByAccepted();
 	const searchRef = useRef(null);
 	const [search, setSearch] = useState("");
-	const [error, setError] = useState("");
+
+	const [currentPage,setCurrentPage] = useState(0);
+	const itemsPerPage = 3;
 
 	const { refetch, data: searchProducts = [] } = useQuery({
-		queryKey: ["searchProducts", search],
+		queryKey: ["searchProducts", search, currentPage],
 		queryFn: async () => {
-			const res = await axiosPublic.get(`/searchProducts/${search}`);
+			const res = await axiosPublic.get(
+				`/searchProducts/${encodeURIComponent(search)}?page=${currentPage}&size=${itemsPerPage}`
+			);
 			return res.data;
 		},
 	});
+	console.log(currentPage);
+	let count = 20;
+	console.log(count);
+	const numberOfPages = Math.ceil(count / itemsPerPage);
+	console.log(numberOfPages);
+	const pages = [...Array(numberOfPages).keys()];
+	console.log(pages);
 
 	const handleSearch = () => {
-       
 		setSearch(searchRef.current.value);
-		if(!search){
-			setError('Please add accurate tag to search');
-			refetch();
-		}
-        
-		
+		setCurrentPage(0);
+		refetch();
+	};
+	const handlePrevPage = () => {
+		if(currentPage>0){
+            setCurrentPage(prevState=> prevState-1);
+        }
 	};
 
-    refetch();
+	const handleNextPage = () => {
+		if (currentPage < numberOfPages -1) {
+			setCurrentPage((nextState) => nextState + 1);
+			refetch();
+		}
+		console.log('next page clicked');
+	};
+	const getPageProducts = () => {
+		const start = currentPage * itemsPerPage;
+		const end = start + itemsPerPage;
+		return products.slice(start, end);
+	  };
 
 	return (
 		<div className="mx-auto container">
@@ -67,13 +89,24 @@ const Products = () => {
 								key={product._id}
 								product={product}></ProductCard>
 					  ))
-					: products.map((product) => (
+					: getPageProducts().map((product) => (
 							<ProductCard
 								key={product._id}
 								product={product}></ProductCard>
 					  ))}
 			</div>
-			<h2 className="text-red-500 text-3xl text-center">{error}</h2>
+
+			<div className="flex justify-center mb-10">
+				<button
+					className="btn mx-2"
+					onClick={handlePrevPage}
+					>
+					Prev
+				</button>
+				<button className="btn mx-2" onClick={handleNextPage}>
+					Next
+				</button>
+			</div>
 		</div>
 	);
 };
