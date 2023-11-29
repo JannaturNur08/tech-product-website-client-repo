@@ -19,6 +19,7 @@ import MyProducts from "../Pages/Dashboard/Users/MyProducts/MyProducts";
 import UpdateProduct from "../Pages/Dashboard/Users/UpdateProduct.jsx/UpdateProduct";
 import ProductDetails from "../Pages/Home/ProductDetails/ProductDetails";
 import Products from "../Pages/Products/Products";
+import Payment from "../Pages/Dashboard/Users/MyProfile/Payment";
 
 
 export const router = createBrowserRouter([
@@ -81,6 +82,11 @@ export const router = createBrowserRouter([
 				path: "updateProducts/:id",
 				element: <UpdateProduct></UpdateProduct>,
 				loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
+			},
+			{
+				path: "payment",
+				element: <Payment></Payment>,
+				
 			},
 			
 			// admin routes

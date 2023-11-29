@@ -1,0 +1,26 @@
+[
+    {
+      "coupon_code": "SAVE20NOW",
+      "expiry_date": "2023-12-31",
+      "description": "Get 20% off on your next purchase",
+      "discount_amount": 20
+    },
+    {
+      "coupon_code": "FREESHIP75",
+      "expiry_date": "2023-11-30",
+      "description": "Free shipping on orders over $75",
+      "discount_amount": 0
+    },
+    {
+      "coupon_code": "HOLIDAY50",
+      "expiry_date": "2023-12-25",
+      "description": "Special holiday discount: $50 off",
+      "discount_amount": 50
+    },
+    {
+      "coupon_code": "BOGO2023",
+      "expiry_date": "2024-01-15",
+      "description": "Buy one, get one free on selected items",
+      "discount_amount": 100
+    }
+  ]

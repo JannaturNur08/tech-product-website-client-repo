@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 
 const MyProfile = () => {
@@ -13,7 +14,8 @@ const MyProfile = () => {
                 <h2 >{user.displayName}</h2>
                 <h3>{user.email}</h3>
                 <div>
-                    <button className="bg-green-500 text-white px-5 py-3 rounded-md">Membership Subscribe</button>
+                    <Link to='/dashboard/payment'>
+					<button className="bg-green-500 text-white px-5 py-3 rounded-md">Membership Subscribe</button></Link>
                 </div>
 			</div>
 		</div>
