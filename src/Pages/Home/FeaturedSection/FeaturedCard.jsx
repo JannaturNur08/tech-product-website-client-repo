@@ -73,12 +73,15 @@ const FeaturedCard = ({ item }) => {
 						className="bg-[#1111110C]  rounded-lg  px-10 lg:w-auto w-9/12 lg:h-[300px]"
 					/>
 				</figure>
-				<div className="card-body">
+				<div className="card-body flex flex-col justify-between">
+					<div>
+					<div>
 					<Link to={`/productDetails/${_id}`}>
 						<h2 className="card-title max-w-[200px]">
 							{product_name}
 						</h2>
 					</Link>
+					</div>
 					<div className="space-y-3">
 						{tags.map((tag, index) => (
 							<p key={index} className="text-blue-500">
@@ -89,17 +92,19 @@ const FeaturedCard = ({ item }) => {
 					<div>
 						<p>{timestamp}</p>
 					</div>
-					<div className="card-actions justify-start">
+					</div>
+					<div className="card-actions justify-start ">
+						<div >
 						{ user ? (
 							<>
 								<button
-									className="btn btn-ghost text-xl"
+									className="btn btn-ghost text-xl bottom-0"
 									onClick={() => handleUpvote(_id)}
 									disabled={user?.email === ownerEmail}>
 									<BiUpvote /> {vote}
 								</button>
 								<button
-									className="btn btn-ghost text-xl"
+									className="btn btn-ghost text-xl bottom-0"
 									onClick={() => handleDownVote(_id)}
 									disabled={user?.email === ownerEmail}>
 									<BiDownvote />
@@ -110,6 +115,7 @@ const FeaturedCard = ({ item }) => {
 								Login To Vote <BiUpvote /> {vote}
 							</Link>
 						)}
+						</div>
 					</div>
 				</div>
 			</div>

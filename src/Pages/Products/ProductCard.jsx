@@ -67,20 +67,23 @@ const ProductCard = ({ product }) => {
         };
 	return (
 		<div>
-            <div className="card   bg-base-100 ">
+            <div className="card lg:card-normal h-[550px]  bg-base-100 ">
 				<figure className="px-10 pt-10">
 					<img
 						src={image}
 						alt="Album"
-						className="rounded-lg"
+						className="rounded-lg "
 					/>
 				</figure>
-				<div className="card-body">
+				<div className="card-body flex flex-col justify-between">
+					<div>
+					<div>
 					<Link to={`/productDetails/${_id}`}>
 						<h2 className="card-title max-w-[400px]">
 							{product_name}
 						</h2>
 					</Link>
+					</div>
 					<div className="space-y-2">
 						{tags.map((tag, index) => (
 							<p key={index} className="text-blue-500">
@@ -91,7 +94,9 @@ const ProductCard = ({ product }) => {
 					<div>
 						<p>{timestamp}</p>
 					</div>
+					</div>
 					<div className="card-actions justify-start">
+						<div >
 						{ user ? (
 							<>
 								<button
@@ -112,6 +117,7 @@ const ProductCard = ({ product }) => {
 								Login To Vote <BiUpvote /> {vote}
 							</Link>
 						)}
+						</div>
 					</div>
 				</div>
 			</div>

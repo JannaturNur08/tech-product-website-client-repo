@@ -96,14 +96,14 @@ const Products = () => {
 					  ))}
 			</div>
 
-			<div className="flex justify-center mb-10">
+			<div className="flex justify-center mb-10 gap-5">
 				<button
-					className="btn mx-2"
+					className="btn px-5 py-2 text-xl btn-outline"
 					onClick={handlePrevPage}
 					>
 					Prev
 				</button>
-				<button className="btn mx-2" onClick={handleNextPage}>
+				<button className="btn px-5 py-2 text-xl btn-outline" onClick={handleNextPage}>
 					Next
 				</button>
 			</div>
