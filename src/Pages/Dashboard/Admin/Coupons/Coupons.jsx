@@ -60,7 +60,7 @@ const Coupons = () => {
 
 									<th>
 										<Link
-											to={`/dashboard/updateProducts/${item._id}`}>
+											to={`/dashboard/updateCoupon/${item._id}`}>
 											<button className="btn btn-ghost btn-md bg-blue-500">
 												<FaEdit
 													className="text-white 

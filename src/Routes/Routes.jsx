@@ -20,6 +20,7 @@ import UpdateProduct from "../Pages/Dashboard/Users/UpdateProduct.jsx/UpdateProd
 import ProductDetails from "../Pages/Home/ProductDetails/ProductDetails";
 import Products from "../Pages/Products/Products";
 import Payment from "../Pages/Dashboard/Users/MyProfile/Payment";
+import UpdateCoupon from "../Pages/Dashboard/Admin/Coupons/UpdateCoupon";
 
 export const router = createBrowserRouter([
 	{
@@ -117,6 +118,16 @@ export const router = createBrowserRouter([
 						<Coupons></Coupons>
 					</AdminRoute>
 				),
+			},
+			{
+				path: "updateCoupon/:id",
+				element: <AdminRoute>
+					<UpdateCoupon></UpdateCoupon>
+				</AdminRoute>,
+				loader: ({ params }) =>
+					fetch(
+						`https://b8a12-server-side-jannatur-nur08.vercel.app/coupons/${params.id}`
+					),
 			},
 
 			// moderator routes
