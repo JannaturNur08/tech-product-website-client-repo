@@ -127,11 +127,11 @@ const FeaturedCard = ({ item }) => {
 							</Link>
 						</div>
 						<div className="space-y-3">
-							{tags.map((tag, index) => (
+						{ Array.isArray(tags)?tags.map((tag, index) => (
 								<p key={index} className="text-blue-500">
 									#{tag}
 								</p>
-							))}
+							)) : null}
 						</div>
 						<div>
 							<p>{timestamp}</p>

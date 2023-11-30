@@ -117,11 +117,11 @@ const ProductCard = ({ product }) => {
 					</Link>
 					</div>
 					<div className="space-y-2">
-						{tags.map((tag, index) => (
-							<p key={index} className="text-blue-500">
-								#{tag}
-							</p>
-						))}
+					{ Array.isArray(tags)?tags.map((tag, index) => (
+								<p key={index} className="text-blue-500">
+									#{tag}
+								</p>
+							)) : null}
 					</div>
 					<div>
 						<p>{timestamp}</p>

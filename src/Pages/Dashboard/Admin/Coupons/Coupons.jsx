@@ -6,9 +6,11 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdAddCard } from "react-icons/md";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const Coupons = () => {
 	const [coupons, refetch] = useCoupons();
+	const axiosPublic = useAxiosPublic();
 	const axiosSecure = useAxiosSecure();
 	const [isCouponFormVisible, setCouponFormVisibility] = useState(false);
 
@@ -33,7 +35,7 @@ const Coupons = () => {
 		};
 		//
 
-		const CouponRes = await axiosSecure.post("/coupons", coupon);
+		const CouponRes = await axiosPublic.post("/coupons", coupon);
 
 		if (CouponRes.data.insertedId > 0) {
 			// show success popup

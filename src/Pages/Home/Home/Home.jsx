@@ -1,4 +1,5 @@
 
+import AdvertiseCoupon from "../AdvertiseCoupon/AdvertiseCoupon";
 import Banner from "../Banner/Banner";
 import FeaturedSection from "../FeaturedSection/FeaturedSection";
 import TrendingSection from "../TrendingSection/TrendingSection";
@@ -12,6 +13,7 @@ const Home = () => {
             <Banner></Banner>
             <FeaturedSection></FeaturedSection>
             <TrendingSection></TrendingSection>
+            <AdvertiseCoupon></AdvertiseCoupon>
         </div>
     );
 };
