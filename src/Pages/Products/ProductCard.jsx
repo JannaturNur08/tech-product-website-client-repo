@@ -9,78 +9,114 @@ import Swal from "sweetalert2";
 
 const ProductCard = ({ product }) => {
 	const { user, loading } = useAuth();
-	const { product_name, timestamp, tags, image, vote, _id, ownerEmail , hasVoted,hasDownVoted} =
+	const { product_name, timestamp, tags, image, vote, _id, ownerEmail} =
 		product;
         const axiosPublic = useAxiosPublic();
 	const [products, refetch] = useSortByAccepted();
 	if (loading) {
 		refetch();
 	}
+	// upvote
 	const handleUpvote = async (productId) => {
-		console.log("button clicked inside featured button");
-		if(!hasVoted){
-			try {
-				await axiosPublic.patch(`/api/upvote/${productId}`, {
-					vote: vote + 1,
+		console.log("button clicked inside featured upvote button");
+
+		try {
+			const userEmail = user.email;
+			// Check if the user has already voted
+			const product = products.find(
+				(product) => product._id === productId
+			);
+			if (product.votedUsers.includes(userEmail)) {
+				Swal.fire({
+					icon: "error",
+					title: "Oops...",
+					text: "You have already upvoted for this product!",
 				});
-	
-				// Update the state with the new status
-				const newProducts = products.map((product) =>
-					product._id === productId
-						? { ...product, vote: vote + 1, hasVoted: true }
-						: product
-				);
-				console.log(newProducts);
-	
-				refetch(newProducts);
-				  // Notify the user with SweetAlert
-				  Swal.fire({
-					icon: 'success',
-					title: 'Upvoted!',
-					text: 'Thank you for your vote!',
-				  });
-				
-				console.log(newProducts);
-			} catch (error) {
-				console.error(
-					`Error marking product ${productId} as featured:`,
-					error
-				);
+				return;
 			}
-		}
-		else{
+
+			await axiosPublic.patch(`/api/upvote/${productId}`, {
+				vote: vote + 1,
+				userEmail: userEmail,
+			});
+
+			// Update the state with the new status
+			const newProducts = products.map((product) =>
+				product._id === productId
+					? {
+							...product,
+							vote: product.vote + 1,
+							votedUsers: [...product.votedUsers, userEmail],
+					  }
+					: product
+			);
+			console.log(newProducts);
+
+			refetch(newProducts);
+			// Notify the user with SweetAlert
 			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'You can upvote only once!',
-			  });
+				icon: "success",
+				title: "Upvoted!",
+				text: "Thank you for your vote!",
+			});
+
+			console.log(newProducts);
+		} catch (error) {
+			console.error(
+				`Error marking product ${productId} as featured:`,
+				error
+			);
 		}
 	};
+	//downvote
 	const handleDownVote = async (productId) => {
-		console.log("button clicked inside featured button");
-	if(!hasDownVoted){
+		console.log("button clicked inside featured upvote button");
+
 		try {
 			if (vote > 0) {
-				await axiosPublic.patch(`/api/upvote/${productId}`, {
+				const userEmail = user.email;
+				// Check if the user has already voted
+				const product = products.find(
+					(product) => product._id === productId
+				);
+				if (product.downVotedUsers.includes(userEmail)) {
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "You have already downvoted for this product!",
+					});
+					return;
+				}
+
+				await axiosPublic.patch(`/api/downvote/${productId}`, {
 					vote: vote - 1,
+					userEmail: userEmail,
 				});
 
 				// Update the state with the new status
 				const newProducts = products.map((product) =>
 					product._id === productId
-						? { ...product, vote: vote - 1 , hasDownVoted: true}
+						? {
+								...product,
+								vote: product.vote - 1,
+								votedUsers: [
+									...product.downVotedUsers,
+									userEmail,
+								],
+						  }
 						: product
 				);
 				console.log(newProducts);
 
 				refetch(newProducts);
+				// Notify the user with SweetAlert
 				Swal.fire({
-					icon: 'success',
-					title: 'Downvoted!',
-					text: 'Thank you for your vote!',
-				  });
+					icon: "success",
+					title: "Downvoted!",
+					text: "Thank you for your vote!",
+				});
+
 				console.log(newProducts);
-				
 			}
 		} catch (error) {
 			console.error(
@@ -88,14 +124,6 @@ const ProductCard = ({ product }) => {
 				error
 			);
 		}
-	}
-	else{
-		Swal.fire({
-			icon: 'error',
-			title: 'Oops...',
-			text: 'You can downvote only once!',
-		  });
-	}
 	};
 	return (
 		<div>

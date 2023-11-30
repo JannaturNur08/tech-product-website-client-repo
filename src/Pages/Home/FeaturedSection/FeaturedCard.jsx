@@ -10,101 +10,122 @@ import Swal from "sweetalert2";
 import useSortByAccepted from "../../../hooks/useSortByAccepted";
 const FeaturedCard = ({ item }) => {
 	const { user } = useAuth();
-	const {
-		product_name,
-		timestamp,
-		tags,
-		image,
-		vote,
-		_id,
-		ownerEmail,
-		hasVoted,
-		hasDownVoted,
-	} = item;
-	console.log(hasVoted);
+	const { product_name, timestamp, tags, image, vote, _id, ownerEmail } =
+		item;
+
 	const axiosPublic = useAxiosPublic();
 	//const [products, refetch] = useSortByTimestampFeatured();
 	const [products, refetch] = useSortByAccepted();
 	// if (loading) {
 	// 	refetch();
 	// }
-
+// upvote
 	const handleUpvote = async (productId) => {
-		console.log("button clicked inside featured button");
-		if (!hasVoted) {
-			try {
-				await axiosPublic.patch(`/api/upvote/${productId}`, {
-					vote: vote + 1,
+		console.log("button clicked inside featured upvote button");
+
+		try {
+			const userEmail = user.email;
+			// Check if the user has already voted
+			const product = products.find(
+				(product) => product._id === productId
+			);
+			if (product.votedUsers.includes(userEmail)) {
+				Swal.fire({
+					icon: "error",
+					title: "Oops...",
+					text: "You have already upvoted for this product!",
+				});
+				return;
+			}
+
+			await axiosPublic.patch(`/api/upvote/${productId}`, {
+				vote: vote + 1,
+				userEmail: userEmail,
+			});
+
+			// Update the state with the new status
+			const newProducts = products.map((product) =>
+				product._id === productId
+					? {
+							...product,
+							vote: product.vote + 1,
+							votedUsers: [...product.votedUsers, userEmail],
+					  }
+					: product
+			);
+			console.log(newProducts);
+
+			refetch(newProducts);
+			// Notify the user with SweetAlert
+			Swal.fire({
+				icon: "success",
+				title: "Upvoted!",
+				text: "Thank you for your vote!",
+			});
+
+			console.log(newProducts);
+		} catch (error) {
+			console.error(
+				`Error marking product ${productId} as featured:`,
+				error
+			);
+		}
+	};
+	//downvote
+	const handleDownVote = async (productId) => {
+		console.log("button clicked inside featured upvote button");
+
+		try {
+			if (vote > 0) {
+				const userEmail = user.email;
+				// Check if the user has already voted
+				const product = products.find(
+					(product) => product._id === productId
+				);
+				if (product.downVotedUsers.includes(userEmail)) {
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "You have already downvoted for this product!",
+					});
+					return;
+				}
+
+				await axiosPublic.patch(`/api/downvote/${productId}`, {
+					vote: vote - 1,
+					userEmail: userEmail,
 				});
 
 				// Update the state with the new status
 				const newProducts = products.map((product) =>
 					product._id === productId
-						? { ...product, vote: vote + 1, hasVoted: true }
+						? {
+								...product,
+								vote: product.vote - 1,
+								votedUsers: [
+									...product.downVotedUsers,
+									userEmail,
+								],
+						  }
 						: product
 				);
 				console.log(newProducts);
-                 console.log(hasVoted);
+
 				refetch(newProducts);
 				// Notify the user with SweetAlert
 				Swal.fire({
 					icon: "success",
-					title: "Upvoted!",
+					title: "Downvoted!",
 					text: "Thank you for your vote!",
 				});
 
 				console.log(newProducts);
-			} catch (error) {
-				console.error(
-					`Error marking product ${productId} as featured:`,
-					error
-				);
 			}
-		} else {
-			Swal.fire({
-				icon: "error",
-				title: "Oops...",
-				text: "You can upvote only once!",
-			});
-		}
-	};
-	const handleDownVote = async (productId) => {
-		console.log("button clicked inside featured button");
-		if (!hasDownVoted) {
-			try {
-				if (vote > 0) {
-					await axiosPublic.patch(`/api/upvote/${productId}`, {
-						vote: vote - 1,
-					});
-
-					// Update the state with the new status
-					const newProducts = products.map((product) =>
-						product._id === productId
-							? { ...product, vote: vote - 1, hasDownVoted: true }
-							: product
-					);
-					console.log(newProducts);
-
-					refetch(newProducts);
-					Swal.fire({
-						icon: "success",
-						title: "Downvoted!",
-						text: "Thank you for your vote!",
-					});
-					console.log(newProducts);
-				}
-			} catch (error) {
-				console.error(
-					`Error marking product ${productId} as featured:`,
-					error
-				);
-			}
-		} else {
-			Swal.fire({
-				icon: "error",
-				title: "Oops...",
-				text: "You can downvote only once!",
-			});
+		} catch (error) {
+			console.error(
+				`Error marking product ${productId} as featured:`,
+				error
+			);
 		}
 	};
 	return (
@@ -127,11 +148,15 @@ const FeaturedCard = ({ item }) => {
 							</Link>
 						</div>
 						<div className="space-y-3">
-						{ Array.isArray(tags)?tags.map((tag, index) => (
-								<p key={index} className="text-blue-500">
-									#{tag}
-								</p>
-							)) : null}
+							{Array.isArray(tags)
+								? tags.map((tag, index) => (
+										<p
+											key={index}
+											className="text-blue-500">
+											#{tag}
+										</p>
+								  ))
+								: null}
 						</div>
 						<div>
 							<p>{timestamp}</p>
