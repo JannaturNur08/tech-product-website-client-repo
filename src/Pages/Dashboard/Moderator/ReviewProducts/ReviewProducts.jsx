@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useSortByPendingProducts from "../../../../hooks/useSortByPendingProducts";
+import { Helmet } from "react-helmet-async";
 
 const ReviewProducts = () => {
 	const [products, refetch] = useSortByPendingProducts();
@@ -81,6 +82,9 @@ const ReviewProducts = () => {
 	};
 	return (
 		<div>
+			<Helmet>
+				<title>Moderator Dashboard</title>
+			</Helmet>
 			<div className="overflow-x-auto">
 				<table className="table  w-full">
 					{/* head */}

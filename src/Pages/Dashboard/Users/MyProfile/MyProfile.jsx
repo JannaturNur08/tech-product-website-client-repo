@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import useIsSubscribed from "../../../../hooks/useIsSubscribed";
+import { Helmet } from "react-helmet-async";
 
 const MyProfile = () => {
 	const { user } = useAuth();
 	const [isSubscribe] = useIsSubscribed();
 	return (
 		<div>
+			<Helmet>
+				<title>User Dashboard</title>
+			</Helmet>
 			<div className="text-center mt-20 space-y-3">
 				<div className="avatar">
 					<div className=" rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

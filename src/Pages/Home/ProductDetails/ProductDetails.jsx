@@ -11,6 +11,7 @@ import useProductsById from "../../../hooks/useProductsById";
 import useReviews from "../../../hooks/useReviews";
 import { useState } from "react";
 import ReviewForm from "./ReviewForm";
+import { Helmet } from "react-helmet-async";
 // import Rating from "react-rating";
 
 const ProductDetails = () => {
@@ -100,6 +101,9 @@ const ProductDetails = () => {
 	return (
 		<div>
 			{/* ... (other parts of the component) */}
+			<Helmet>
+				<title>Product Details</title>
+			</Helmet>
 			<div className="mx-auto container ">
 				<div className="flex lg:mt-24 lg:gap-10">
 					<div>

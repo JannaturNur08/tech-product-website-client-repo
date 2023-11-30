@@ -6,6 +6,7 @@ import { FaUsers } from "react-icons/fa";
 import { MdRateReview } from "react-icons/md";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { Chart } from "react-google-charts";
+import { Helmet } from "react-helmet-async";
 
 const Statistics = () => {
 	const { user } = useAuth();
@@ -33,6 +34,9 @@ const Statistics = () => {
 	console.log(statistics);
 	return (
 		<div>
+			<Helmet>
+				<title>Admin Dashboard</title>
+			</Helmet>
 			<h2 className="text-3xl mt-10">
 				<span>Hi, Welcome </span>
 				{user?.displayName ? user.displayName : "Back"}

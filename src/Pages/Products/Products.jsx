@@ -3,6 +3,7 @@ import useSortByAccepted from "../../hooks/useSortByAccepted";
 import ProductCard from "./ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const Products = () => {
 	const axiosPublic = useAxiosPublic();
@@ -57,6 +58,9 @@ const Products = () => {
 	return (
 		<div className="mx-auto container">
 			<h2>This is Products Page</h2>
+			<Helmet>
+				<title>Products Collection</title>
+			</Helmet>
 			<div className="form-control mt-32">
 				<div className="input-group">
 					<input

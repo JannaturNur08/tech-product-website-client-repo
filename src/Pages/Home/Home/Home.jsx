@@ -1,4 +1,5 @@
 
+import { Helmet } from "react-helmet-async";
 import AdvertiseCoupon from "../AdvertiseCoupon/AdvertiseCoupon";
 import Banner from "../Banner/Banner";
 import FeaturedSection from "../FeaturedSection/FeaturedSection";
@@ -9,7 +10,9 @@ const Home = () => {
    
     return (
         <div className="overflow-x-hidden">
-            <h2>this is home</h2>
+            <Helmet>
+				<title>Home || MatraTech</title>
+			</Helmet>
             <Banner></Banner>
             <FeaturedSection></FeaturedSection>
             <TrendingSection></TrendingSection>
