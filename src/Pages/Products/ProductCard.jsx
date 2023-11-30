@@ -5,66 +5,98 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useSortByAccepted from "../../hooks/useSortByAccepted";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductCard = ({ product }) => {
 	const { user, loading } = useAuth();
-	const { product_name, timestamp, tags, image, vote, _id, ownerEmail } =
+	const { product_name, timestamp, tags, image, vote, _id, ownerEmail , hasVoted,hasDownVoted} =
 		product;
         const axiosPublic = useAxiosPublic();
 	const [products, refetch] = useSortByAccepted();
 	if (loading) {
 		refetch();
 	}
-        const handleUpvote = async (productId) => {
-            console.log("button clicked inside featured button");
-            try {
-                await axiosPublic.patch(`/api/upvote/${productId}`, {
-                    vote: vote + 1,
-                });
-    
-                // Update the state with the new status
-                const newProducts = products.map((product) =>
-                    product._id === productId
-                        ? { ...product, vote: vote + 1 }
-                        : product
-                );
-                console.log(newProducts);
-    
-                refetch(newProducts);
-                console.log(newProducts);
-            } catch (error) {
-                console.error(
-                    `Error marking product ${productId} as featured:`,
-                    error
-                );
-            }
-        };
-        const handleDownVote = async (productId) => {
-            console.log("button clicked inside featured button");
-            try {
-                if (vote > 0) {
-                    await axiosPublic.patch(`/api/upvote/${productId}`, {
-                        vote: vote - 1,
-                    });
-    
-                    // Update the state with the new status
-                    const newProducts = products.map((product) =>
-                        product._id === productId
-                            ? { ...product, vote: vote - 1 }
-                            : product
-                    );
-                    console.log(newProducts);
-    
-                    refetch(newProducts);
-                    console.log(newProducts);
-                }
-            } catch (error) {
-                console.error(
-                    `Error marking product ${productId} as featured:`,
-                    error
-                );
-            }
-        };
+	const handleUpvote = async (productId) => {
+		console.log("button clicked inside featured button");
+		if(!hasVoted){
+			try {
+				await axiosPublic.patch(`/api/upvote/${productId}`, {
+					vote: vote + 1,
+				});
+	
+				// Update the state with the new status
+				const newProducts = products.map((product) =>
+					product._id === productId
+						? { ...product, vote: vote + 1, hasVoted: true }
+						: product
+				);
+				console.log(newProducts);
+	
+				refetch(newProducts);
+				  // Notify the user with SweetAlert
+				  Swal.fire({
+					icon: 'success',
+					title: 'Upvoted!',
+					text: 'Thank you for your vote!',
+				  });
+				
+				console.log(newProducts);
+			} catch (error) {
+				console.error(
+					`Error marking product ${productId} as featured:`,
+					error
+				);
+			}
+		}
+		else{
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'You can upvote only once!',
+			  });
+		}
+	};
+	const handleDownVote = async (productId) => {
+		console.log("button clicked inside featured button");
+	if(!hasDownVoted){
+		try {
+			if (vote > 0) {
+				await axiosPublic.patch(`/api/upvote/${productId}`, {
+					vote: vote - 1,
+				});
+
+				// Update the state with the new status
+				const newProducts = products.map((product) =>
+					product._id === productId
+						? { ...product, vote: vote - 1 , hasDownVoted: true}
+						: product
+				);
+				console.log(newProducts);
+
+				refetch(newProducts);
+				Swal.fire({
+					icon: 'success',
+					title: 'Downvoted!',
+					text: 'Thank you for your vote!',
+				  });
+				console.log(newProducts);
+				
+			}
+		} catch (error) {
+			console.error(
+				`Error marking product ${productId} as featured:`,
+				error
+			);
+		}
+	}
+	else{
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'You can downvote only once!',
+		  });
+	}
+	};
 	return (
 		<div>
             <div className="card lg:card-normal h-[550px]  bg-base-100 ">

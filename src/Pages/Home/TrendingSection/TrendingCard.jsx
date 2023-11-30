@@ -4,42 +4,64 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useSortByAccepted from "../../../hooks/useSortByAccepted";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 
+import Swal from "sweetalert2";
+
 
 const TrendingCard = ({ item }) => {
-	const { product_name, timestamp, tags, image, vote, _id, ownerEmail } =
+	const { product_name, timestamp, tags, image, vote, _id, ownerEmail,hasVoted,hasDownVoted } =
 		item;
 	const { user } = useAuth();
+	console.log(tags);
 
 	const axiosPublic = useAxiosPublic();
 	const [products, refetch] = useSortByAccepted();
+	// const [hasVoted, setHasVoted] = useState(false);
+	// const [hasDownVoted, setHasDownVoted] = useState(false);
 	
 	
 	const handleUpvote = async (productId) => {
 		console.log("button clicked inside featured button");
-		try {
-			await axiosPublic.patch(`/api/upvote/${productId}`, {
-				vote: vote + 1,
-			});
-
-			// Update the state with the new status
-			const newProducts = products.map((product) =>
-				product._id === productId
-					? { ...product, vote: vote + 1 }
-					: product
-			);
-			console.log(newProducts);
-
-			refetch(newProducts);
-			console.log(newProducts);
-		} catch (error) {
-			console.error(
-				`Error marking product ${productId} as featured:`,
-				error
-			);
+		if(!hasVoted){
+			try {
+				await axiosPublic.patch(`/api/upvote/${productId}`, {
+					vote: vote + 1,
+				});
+	
+				// Update the state with the new status
+				const newProducts = products.map((product) =>
+					product._id === productId
+						? { ...product, vote: vote + 1, hasVoted: true }
+						: product
+				);
+				console.log(newProducts);
+	
+				refetch(newProducts);
+				  // Notify the user with SweetAlert
+				  Swal.fire({
+					icon: 'success',
+					title: 'Upvoted!',
+					text: 'Thank you for your vote!',
+				  });
+				
+				console.log(newProducts);
+			} catch (error) {
+				console.error(
+					`Error marking product ${productId} as featured:`,
+					error
+				);
+			}
+		}
+		else{
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'You can upvote only once!',
+			  });
 		}
 	};
 	const handleDownVote = async (productId) => {
 		console.log("button clicked inside featured button");
+	if(!hasDownVoted){
 		try {
 			if (vote > 0) {
 				await axiosPublic.patch(`/api/upvote/${productId}`, {
@@ -49,13 +71,19 @@ const TrendingCard = ({ item }) => {
 				// Update the state with the new status
 				const newProducts = products.map((product) =>
 					product._id === productId
-						? { ...product, vote: vote - 1 }
+						? { ...product, vote: vote - 1 , hasDownVoted: true}
 						: product
 				);
 				console.log(newProducts);
 
 				refetch(newProducts);
+				Swal.fire({
+					icon: 'success',
+					title: 'Downvoted!',
+					text: 'Thank you for your vote!',
+				  });
 				console.log(newProducts);
+				
 			}
 		} catch (error) {
 			console.error(
@@ -63,6 +91,14 @@ const TrendingCard = ({ item }) => {
 				error
 			);
 		}
+	}
+	else{
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'You can downvote only once!',
+		  });
+	}
 	};
 	return (
 		<div>
@@ -78,11 +114,11 @@ const TrendingCard = ({ item }) => {
 							</h2>
 						</Link>
 						<div className="space-y-2">
-							{tags.map((tag, index) => (
+							{ Array.isArray(tags)?tags.map((tag, index) => (
 								<p key={index} className="text-blue-500">
 									#{tag}
 								</p>
-							))}
+							)) : null}
 						</div>
 						<div>
 							<p>{timestamp}</p>
@@ -93,13 +129,13 @@ const TrendingCard = ({ item }) => {
 									<button
 										className="btn btn-ghost text-xl"
 										onClick={() => handleUpvote(_id)}
-										disabled={user?.email === ownerEmail}>
+										disabled={ user?.email === ownerEmail}>
 										<BiUpvote /> {vote}
 									</button>
 									<button
 										className="btn btn-ghost text-xl"
 										onClick={() => handleDownVote(_id)}
-										disabled={user?.email === ownerEmail}>
+										disabled={ user?.email === ownerEmail}>
 										<BiDownvote />
 									</button>
 								</>

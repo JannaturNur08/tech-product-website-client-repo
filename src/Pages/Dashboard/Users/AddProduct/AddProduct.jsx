@@ -16,7 +16,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const AddProduct = () => {
 	const { user } = useAuth();
-	const { register, handleSubmit, reset, control } = useForm();
+	const { register, handleSubmit, reset, control , formState: { isDirty: resetForm } } = useForm();
 	const [isSubscribe] = useIsSubscribed();
 	const [hasSubmittedProduct, setHasSubmittedProduct] = useState(false);
 
@@ -70,12 +70,16 @@ const AddProduct = () => {
 			if (productRes.data.insertedId) {
 				setHasSubmittedProduct(true);
 				// show success popup
-				reset();
+				if (resetForm) {
+					reset();
+				}
+	
+			
 
 				Swal.fire({
 					position: "top-end",
 					icon: "success",
-					title: `${data.name} is added to the database.`,
+					title: 'Product Data is added to the database.',
 					showConfirmButton: false,
 					timer: 1500,
 				});

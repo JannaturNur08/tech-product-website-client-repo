@@ -12,7 +12,10 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "featured",
-		"report": "pending"
+		"report": "pending",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
+
 	},
 	{
 		"ownerEmail": "zinat@gmail.com",
@@ -27,7 +30,9 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "featured",
-		"report": "reported"
+		"report": "reported",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	},
 	{
 		"ownerEmail": "matrix@gmail.com",
@@ -42,7 +47,9 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "pending",
-		"report": "pending"
+		"report": "pending",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	},
 	{
 		"ownerEmail": "matrix@gmail.com",
@@ -57,7 +64,9 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "featured",
-		"report": "pending"
+		"report": "pending",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	},
 	{
 		"ownerEmail": "zinat@gmail.com",
@@ -72,7 +81,9 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured":"featured",
-		"report": "reported"
+		"report": "reported",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	},
 	{
 		"ownerEmail": "zinat@gmail.com",
@@ -87,7 +98,9 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "pending",
-		"report": "pending"
+		"report": "pending",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	},
 	{
 		"ownerEmail": "matrix@gmail.com",
@@ -102,7 +115,9 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "pending",
-		"report": "pending"
+		"report": "pending",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	},
 	{
 		"ownerEmail": "matrix@gmail.com",
@@ -117,7 +132,9 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "pending",
-		"report": "pending"
+		"report": "pending",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	},
 	{
 		"ownerEmail": "zinat@gmail.com",
@@ -132,7 +149,9 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "pending",
-		"report": "pending"
+		"report": "pending",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	},
 	{
 		"ownerEmail": "zinat@gmail.com",
@@ -147,7 +166,9 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "featured",
-		"report": "pending"
+		"report": "pending",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	},
 	{
 		"ownerEmail": "matrix@gmail.com",
@@ -162,6 +183,8 @@
 		"vote": 0,
 		"votedUsers": [],
 		"featured": "pending",
-		"report": "reported"
+		"report": "reported",
+		"hasVoted":"false",
+		"hasDownVoted":"false"
 	}
 ]
