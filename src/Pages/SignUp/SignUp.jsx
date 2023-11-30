@@ -46,7 +46,7 @@ const SignUp = () => {
 		});
 	};
 	return (
-		<div className="lg:w-3/4 mx-auto mt-40">
+		<div className="lg:w-3/4 mx-auto mt-40 mb-10">
 			<h2 className="font-mercellus text-4xl">SignUp</h2>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="form-control">
