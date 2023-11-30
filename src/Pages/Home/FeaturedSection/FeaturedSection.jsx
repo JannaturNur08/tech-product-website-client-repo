@@ -22,7 +22,7 @@ const FeaturedSection = () => {
 	return (
 		<div>
 			<TilteSection title="Featured Products"></TilteSection>
-			<div className="grid md:grid-cols-2 lg:gap-10 my-16 mx-auto container grid-cols-1 gap-3 md:gap-5">
+			<div className="grid md:grid-cols-2 lg:gap-10 my-16 mx-auto container grid-cols-1 gap-3 md:gap-3">
 				{Array.isArray(sortedProducts)
 					? sortedProducts
 							.slice(0, 4)

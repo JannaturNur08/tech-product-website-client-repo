@@ -114,7 +114,7 @@ const FeaturedCard = ({ item }) => {
 					<img
 						src={image}
 						alt="Album"
-						className="bg-[#1111110C]  rounded-lg  px-10 lg:w-auto w-9/12 lg:h-[300px]"
+						className="bg-[#1111110C]  rounded-lg   lg:w-auto w-10/12 lg:h-[300px]"
 					/>
 				</figure>
 				<div className="card-body flex flex-col justify-between">

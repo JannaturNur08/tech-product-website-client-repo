@@ -2,15 +2,16 @@
 
 const Footer = () => {
     return (
-      <footer className="footer p-10 bg-primary text-neutral-content">
+      <footer className="footer  p-10 bg-primary text-neutral-content">
       <aside>
       <div className="flex items-center relative">
-						<img src="https://i.ibb.co/54bvJxy/logo.png" alt="" className="w-20 h-20"/>
-					<a className="btn btn-ghost normal-case text-base lg:text-3xl absolute lg:ml-12 mt-2">
+						<img src="https://i.ibb.co/54bvJxy/logo.png" alt="" className="w-[70px]"/>
+					<a className="btn btn-ghost   lg:text-3xl text-base absolute ml-10 mt-2">
 						atraTech
 					</a>
 					</div>
         <p>Tech Industries Ltd.<br/>Providing reliable tech since 1992</p>
+        <p>Copyright © 2023 - All right reserved by Tech Industries Ltd</p>
       </aside> 
       <nav>
         <header className="footer-title">Social</header> 
@@ -20,6 +21,9 @@ const Footer = () => {
           <a href="https://web.facebook.com/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
         </div>
       </nav>
+      <aside>
+    
+  </aside>
     </footer>
     );
 };

@@ -7,7 +7,7 @@ import TrendingSection from "../TrendingSection/TrendingSection";
 const Home = () => {
    
     return (
-        <div>
+        <div className="overflow-x-hidden">
             <h2>this is home</h2>
             <Banner></Banner>
             <FeaturedSection></FeaturedSection>
