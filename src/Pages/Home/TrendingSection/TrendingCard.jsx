@@ -124,6 +124,7 @@ const TrendingCard = ({ item }) => {
 							<p>{timestamp}</p>
 						</div>
 						<div className="card-actions justify-start">
+							<div className="flex gap-3">
 							{user ? (
 								<>
 									<button
@@ -144,6 +145,7 @@ const TrendingCard = ({ item }) => {
 									Login To Vote <BiUpvote /> {vote}
 								</Link>
 							)}
+							</div>
 						</div>
 					</div>
 				</div>

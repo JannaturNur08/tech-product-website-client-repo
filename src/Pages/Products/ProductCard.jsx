@@ -128,7 +128,7 @@ const ProductCard = ({ product }) => {
 					</div>
 					</div>
 					<div className="card-actions justify-start">
-						<div >
+						<div className="flex gap-3">
 						{ user ? (
 							<>
 								<button

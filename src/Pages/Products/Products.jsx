@@ -11,7 +11,7 @@ const Products = () => {
 	const [search, setSearch] = useState("");
 
 	const [currentPage,setCurrentPage] = useState(0);
-	const itemsPerPage = 3;
+	const itemsPerPage = 20;
 
 	const { refetch, data: searchProducts = [] } = useQuery({
 		queryKey: ["searchProducts", search, currentPage],
@@ -23,7 +23,7 @@ const Products = () => {
 		},
 	});
 	console.log(currentPage);
-	let count = 20;
+	let count = 100;
 	console.log(count);
 	const numberOfPages = Math.ceil(count / itemsPerPage);
 	console.log(numberOfPages);
