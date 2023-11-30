@@ -78,9 +78,12 @@ const Navbar = () => {
 							{navOptions}
 						</ul>
 					</div>
-					<a className="btn btn-ghost normal-case text-base lg:text-3xl">
-						MatraTech
+					<div className="flex items-center relative">
+						<img src="https://i.ibb.co/54bvJxy/logo.png" alt="" className="w-20 h-20"/>
+					<a className="btn btn-ghost normal-case text-base lg:text-3xl absolute lg:ml-12 mt-2">
+						atraTech
 					</a>
+					</div>
 				</div>
 				<div className="navbar-center hidden lg:flex">
 					<ul className="flex gap-6 px-1  font-mercellus text-base">
